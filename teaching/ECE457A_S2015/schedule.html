@@ -1,0 +1,523 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ECE457A: Cooperative and Adaptive Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Cooperative and Adaptive Algorithms, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="6"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000"> 
+    <td class="content" width="100"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="100"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="100"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></td>
+	<td class="content" width="150"><a href="policies.html"><font color="#FFFFFF">Evaluation and Policy</font></a></td>
+    <td class="content" width="100"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></td>
+    <td class="content" width="100"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></td>
+        </tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td height="617" class="content" colspan="6"> 
+      <div class="pageTitle">Schedule For Spring 2015 [all the course materials 
+        are available on <a href="http://learn.uwaterloo.ca">UW LEARN system</a>]</div>
+        <div class="content"> 
+        <br>
+                
+		<table class="content" border="1" cellspacing="0">
+<tbody>
+<tr>
+<td bgcolor="#CCCCCC" width="57">
+<div align="center"><span><strong>ID</strong></span></div>
+</td>
+<td bgcolor="#CCCCCC" width="158">
+<div align="center"><span><strong>Date</strong></span></div>
+</td>
+<td bgcolor="#CCCCCC" width="327">
+<div align="center"><span><strong>Lectures</strong></span></div>
+</td>
+<td bgcolor="#CCCCCC" width="201">
+<div align="center"><span><strong>Downloads</strong></span></div>
+</td>
+</tr>
+<tr>
+<td width="57" height="19">
+<div align="center"><span>1</span></div>
+</td>
+<td width="158" height="19">
+<div align="center">May 5</div>
+</td>
+<td width="327" height="19">
+<div align="center"><span>Course Presentation</span></div>
+</td>
+<td align="center" width="201" height="19">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="18">
+<div align="center"><span>2</span></div>
+</td>
+<td width="158" height="18">
+<div align="center">May 7</div>
+</td>
+<td width="327" height="18">
+<div align="center">Non-biological Intelligence and Computational  Problems</div>
+</td>
+<td align="center" width="201" height="18">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="18">
+<div align="center">3</div>
+</td>
+<td width="158" height="18">
+<div align="center">May 12</div>
+</td>
+<td width="327" height="18">
+<div align="center">Optimization Theory</div>
+</td>
+<td align="center" width="201" height="18">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="18">
+<div align="center"><span>4</span></div>
+</td>
+<td width="158" height="19">
+<div align="center">May 14</div>
+</td>
+<td width="327" height="18">
+<div align="center">Graph Search Algorithms</div>
+</td>
+<td align="center" width="201" height="18">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center"><span>5</span></div>
+</td>
+<td width="158" height="18">
+<div align="center">May 19</div>
+</td>
+<td width="327">
+<div align="center">Game Playing as Search</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#FFFFFF" width="57" height="11">
+<div align="center"><span>6</span></div>
+</td>
+<td bgcolor="#FFFFFF" width="158" height="11">
+<div align="center">May 21</div>
+</td>
+<td bgcolor="#FFFFFF" width="327" height="11">
+<div align="center">Metaheuristics</div>
+</td>
+<td align="center" bgcolor="#FFFFFF" width="201" height="11">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#00CC99" width="57" height="11">
+<div align="center">7</div>
+</td>
+<td bgcolor="#00CC99" width="158" height="11">
+<div align="center">May 22</div>
+</td>
+<td bgcolor="#00CC99" width="327" height="11">
+<div align="center">Deadline for Team-based Project Selection</div>
+</td>
+<td align="center" bgcolor="#00CC99" width="201" height="11">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center"><span>8</span></div>
+</td>
+<td width="158">
+<div align="center">May 26</div>
+</td>
+<td width="327">
+<div align="center">Tabu Search-I</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="17">
+<div align="center">9</div>
+</td>
+<td width="158" height="17">
+<div align="center">May 28</div>
+</td>
+<td width="327" height="17">
+<div align="center">Tabu Search-II</div>
+</td>
+<td align="center" width="201" height="17">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">10</div>
+</td>
+<td width="158">
+<div align="center">June 2</div>
+</td>
+<td width="327">
+<div align="center">Simulated Annealing-I</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">11</div>
+</td>
+<td width="158">
+<div align="center">June 4</div>
+</td>
+<td bgcolor="#FFFFFF" width="327" height="11">
+<div align="center">Simulated Annealing-II</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">12</div>
+</td>
+<td width="158">
+<div align="center">June 9</div>
+</td>
+<td width="327">
+<div align="center">P-Metaheuristics</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">13</div>
+</td>
+<td width="158">
+<div align="center">June 11</div>
+</td>
+<td width="327">
+<div align="center">Evolutionary Computation</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">14</div>
+</td>
+<td width="158">
+<div align="center">June 16</div>
+</td>
+<td width="327">
+<div align="center">Genetic Algorithms-I</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="20">
+<div align="center">15</div>
+</td>
+<td width="158" height="20">
+<div align="center">June 18</div>
+</td>
+<td width="327" height="20">
+<div align="center"><span>Genetic Algorithms-II</span></div>
+</td>
+<td align="center" width="201" height="20">&nbsp;</td>
+</tr>
+<tr>
+<td width="57" height="17">
+<div align="center">16</div>
+</td>
+<td width="158" height="17">
+<div align="center">June 23</div>
+</td>
+<td width="327" height="17">
+<div align="center"><span>Genetic Algorithms-III</span></div>
+</td>
+<td align="center" width="201" height="17">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">17</div>
+</td>
+<td width="158">
+<div align="center">June 25</div>
+</td>
+<td width="327">
+<div align="center"><span>Genetic Algorithms-IV</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">18</div>
+</td>
+<td  width="158">
+<div align="center">June 30</div>
+</td>
+<td width="327">
+<div align="center">Swarm Intelligence</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">19</div>
+</td>
+<td width="158">
+<div align="center">July 2</div>
+</td>
+<td width="327">
+<div align="center"><span>Particle Swarm Optimization (PSO)-I</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">20</div>
+</td>
+<td width="158">
+<div align="center">July 7</div>
+</td>
+<td width="327">
+<div align="center"><span>Particle Swarm Optimization (PSO)-II</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">21</div>
+</td>
+<td width="158">
+<div align="center">July 9</div>
+</td>
+<td width="327">
+<div align="center"><span>Particle Swarm Optimization (PSO)-III</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">22</div>
+</td>
+<td width="158">
+<div align="center">July 14</div>
+</td>
+<td width="327">
+<div align="center"><span>Ant Colony Optimization (ACO)-I</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">23</div>
+</td>
+<td width="158">
+<div align="center">July 16</div>
+</td>
+<td width="327">
+<div align="center"><span>Ant Colony Optimization (ACO)-II</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">24</div>
+</td>
+<td width="158">
+<div align="center">July 21</div>
+</td>
+<td width="327">
+<div align="center"><span>Ant Colony Optimization (ACO)-III</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">25</div>
+</td>
+<td width="158">
+<div align="center">July 23</div>
+</td>
+<td width="327">
+<div align="center"><span>Revision</span></div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#66FFFF" width="57">
+<div align="center"><span style="color: #000000;">26</span></div>
+</td>
+<td bgcolor="#66FFFF" width="158">
+<div align="center"><span style="color: #000000;">July 24</span></div>
+</td>
+<td bgcolor="#66FFFF" width="327">
+<div align="center"><span style="color: #000000;">Deadline for Project Submission</span></div>
+</td>
+<td align="center" bgcolor="#66FFFF" width="201"><span style="color: #000000;">&nbsp;</span></td>
+</tr>
+<tr>
+<td width="57">
+<div align="center">27</div>
+</td>
+<td width="158">
+<div align="center">July 28</div>
+</td>
+<td width="327">
+<div align="center">Lectures/classes end</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+
+<tr>
+<td width="57">
+<div align="center">27</div>
+</td>
+<td width="158">
+<div align="center">July 29 - Aug. 3</div>
+</td>
+<td width="327">
+<div align="center">Pre-examination study days</div>
+</td>
+<td align="center" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#CCFF99" width="57">
+<div align="center">28</div>
+</td>
+<td bgcolor="#CCFF99" width="158">
+<div align="center">Aug. 3</div>
+</td>
+<td bgcolor="#CCFF99" width="327">
+<div align="center">University holiday: Civic Holiday</div>
+</td>
+<td align="center" bgcolor="#CCFF99" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#FF3300" width="57">
+<div align="center">29</div>
+</td>
+<td bgcolor="#FF3300" width="158">
+<div align="center">Aug. 4-15</div>
+</td>
+<td bgcolor="#FF3300" width="327">
+<div align="center">On-campus examinations begin</div>
+</td>
+<td align="center" bgcolor="#FF3300" width="201">&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#9999FF" width="57">
+<div align="center">30</div>
+</td>
+<td bgcolor="#9999FF" width="158">
+<div align="center">Aug. 17</div>
+</td>
+<td bgcolor="#9999FF" width="327">
+<div align="center">Unofficial Grades begin to appear</div>
+</td>
+<td align="center" bgcolor="#9999FF" width="201">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+        </div>
+        
+     
+    
+       
+          
+            </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="6" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2015</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

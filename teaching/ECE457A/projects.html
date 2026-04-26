@@ -1,0 +1,658 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ECE457A: Cooperative and Adaptive Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Metaheuristic Optimization and Their Applications in Robotics and Automation, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="6"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000"> 
+    <td class="content" width="100"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="100"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="100"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></td>
+	<td class="content" width="150"><a href="policies.html"><font color="#FFFFFF">Evaluation and Policy</font></a></td>
+    <td class="content" width="100"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></td>
+    <td class="content" width="100"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></td>
+        </tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td height="5078" class="content" colspan="6"> 
+      <div class="pageTitle">Projects</div><br>
+        
+      <div class="content"> 
+        <p>Team-based projects are integrated as an essential part of the course. 
+          These projects help students to get hands-on experience in applying 
+          different metaheuristic technqiues studied in this course in solving 
+          combinatroial problems. Students select one of the problems listed below 
+          for which they will undertake an independent investigation and apply 
+          the studied algorithms in the course to solve it. Course instructor 
+          and TAs will provide support to help the students with searching and 
+          using the literature, analyzing the challenging aspects of the problem 
+          and writing the final report of the project. The programming parts of 
+          the project must be implemented in <b>Matlab/Octave</b>.<br>
+          <br>
+          The following is the <b>definite list </b>of projects. <font color="#CC0000">Registration 
+          is on a<b> first come, first served basis</b>.</font> To register, please 
+          fill in the <a href="projects/ECE457A-Teams%20template.xlsx">registration 
+          form</a> before <b>Friday May 23, 2014 and submit it to your <a href="mailto:akhamis@pami.uwaterloo.ca">course 
+          instructor</a>'s eamil address</b>. Please check below the registration 
+          status before selecting the project.</p>
+          <div class="content"> 
+            
+         <table class="content" border="1" cellspacing="1">
+<tbody>
+<tr bgcolor="#000000">
+<td colspan="4" height="14">
+<div align="left"><span style="color: #ffffff;"><strong>List of available projects:</strong></span></div>
+</td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#FFFFCC" width="3%" height="14">ID</td>
+<td valign="middle" bgcolor="#FFFFCC" width="74%" height="14">Project title and description</td>
+<td valign="top" bgcolor="#FFFFCC" width="23%" height="14">Assignement</td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="66">
+<div align="center">1</div>
+</td>
+<td valign="top" width="74%" height="66"><strong>Railway Scheduling Problem:</strong>&nbsp;A feasible train timetable should specify for each train the departure and arrival times to each dependency of the network in such a way that the line capacity and other operational constraints are taken into account. Optimizing train timetables on a single line track is known to be NP-hard with respect to the number of conflicts in the schedule. Ref. [Dario Pacciarelli and Marco Pranzo, "A Tabu Search Algortihm for the Railway Scheduling Problem, MIC&rsquo;2001 - 4th Metaheuristics International Conference.]</td>
+<td valign="top" width="23%" height="66">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Trevor Jones</li>
+<li>Nick O'Hara</li>
+<li>Michal Dedys</li>
+<li>William Lindsay</li>
+<li>---</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="99">
+<div align="center">2</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="99"><strong>Flight Scheduling Problem:</strong>&nbsp;Given demand and revenues for every origin-destination pair over time-of-the-day and day-of-the-week, route information distances, times, operating restrictions, aircraft characteristics and operating costs and operational and managerial constraints. Find a set of flights with departure and arrival times and aircraft assignment which maximize profits. Ref. [Ghizlane Bencheikh, Jaouad Boukachour and Ahmed EL Hilali Alaoui, "Improved Ant Colony Algorithm to Solve the Aircraft Landing Problem," International Journal of Computer Theory and Engineering, Vol. 3, No. 2, April 2011 ISSN: 1793-8201] and [F. Mokhatab Rafiei, S.M. Manzari, M. Khashei, "Scheduling Flight Perturbations with Ant Colony Optimization Approach," International Journal of Computer Science and Artificial Intelligence ].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="99">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Piyush Gadigone</li>
+<li>Yash Malik</li>
+<li>Satyam Gupta</li>
+<li>Khushi Sohi</li>
+<li>Sugandha Sharma</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="94">
+<div align="center">3</div>
+</td>
+<td valign="top" width="74%" height="94"><strong>Crew Scheduling:</strong>&nbsp;is the process of assigning crews to operate transportation systems, such as rail lines or aircraft. In this problem, within a set of constraints and rules, move a set roster of people with certain qualifications, from place to place with the least amount of personnel and aircraft or vehicles in the least amount of time. Ref. [A. Azadeha, M. Hosseinabadi Farahania, H. Eivazyb, S. Nazari-Shirkouhia, G. Asadipoura, "A hybrid meta-heuristic algorithm for optimization of crew scheduling Applied Soft Computing, Volume 13, Issue 1, January 2013, Pages 158&ndash;164.], [Panta Lucica, Dusan Teodorovica, "Simulated annealing for the multi-objective aircrew rostering problem," Transportation Research Part A 33 (1999) 19-45] and [MING-SHEN JIAN, and TA-YUAN CHOU, "Multiobjective Genetic Algorithm to Solve the Train Crew Scheduling Problem," NEW ASPECTS of SYSTEMS THEORY and SCIENTIFIC COMPUTATION.].</td>
+<td valign="top" width="23%" height="94">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Divij Rajkumar</li>
+<li>Warren Smith</li>
+<li>Steven Vincent</li>
+<li>Masroor Hasan</li>
+<li>Joe Manduca</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="81">
+<div align="center">4</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="81"><strong>Timetabling Problem (TTP):</strong>&nbsp;The course timetabling problem involves resource allocation constraints; under limited resources the conditions with regard to teachers, courses, students, and teaching facilities have to be met. In this problem, it is given a list of m teachers, a list of p classes involved a list of n weekly teaching hours for each class the curriculum of each class, that is the list of the frequencies of the teachers working in the class and a set of hard and/or soft contratints. Ref. [Ruey-Maw Chen and Hsiao-Fang Shih, "Solving University Course Timetabling Problems Using Constriction Particle Swarm Optimization with Local Search," Algorithms 2013, 6, 227-244; doi:10.3390/a6020227.]</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="81">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Elisa Lou</li>
+<li>Aaron Pang</li>
+<li>Maxim Rabiciuc</li>
+<li>Ajay Sreenivasan</li>
+<li>Eric Tam</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="87">
+<div align="center">5</div>
+</td>
+<td valign="middle" width="74%" height="87"><strong>Drilling of Printed Circuit Boards:&nbsp;</strong>To connect a conductor on one layer with a conductor on another layer, or to position the pins of integrated circuits, holes have to be drilled through the board. The holes may be of different sizes. To drill two holes of different diameters consecutively, the head of the machine has to move to a tool box and change the drilling equipment. This is quite time consuming. Thus it is clear that one has to choose some diameter, drill all holes of the same diameter, change the drill, drill the holes of the next diameter, etc. The aim is to minimize the travel time for the machine head. For more info: [Gr&ouml;tschel, M.; M. J&uuml;nger &amp; G. Reinelt (1991). Optimal Control of Plotting and Drilling Machines: A Case Study. Mathematical Methods of Operations Research, Vol. 35, No. 1, (January, 1991), pp.61-84.]</td>
+<td valign="middle" width="23%" height="87">&nbsp;
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Robert Dandy</li>
+<li>Steven Meyer</li>
+<li>Jacob Simon</li>
+<li>---</li>
+<li>---</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="96">
+<div align="center">6</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="96"><strong>Order-picking Problem in Warehouses:</strong>&nbsp;This problem is associated with material handling in a warehouse. Assume that at a warehouse an order arrives for a certain subset of the items stored in the warehouse. Some vehicle has to collect all items of this order to ship them to the customer. The relation to the TSP is immediately seen. The storage locations of the items correspond to the nodes of the graph. The distance between two nodes is given by the time needed to move the vehicle from one location to the other. The problem of finding a shortest route for the vehicle with minimum pickup time can now be solved as a TSP. See [van Dal, R. (1992). Special Cases of the Traveling Salesman Problem, Wolters-Noordhoff, Groningen.], [Matic Horvat. An Approach to Order Picking Optimization in Warehouses. DIPLOMA THESIS, University of Ljubljana, 2012] and [Yuanbin Hou1, Long Li1, Lei Wang, "Picking Routes Optimization of Automated Warehouse Based on Parthenon Genetic Ant Colony Algorithm," 2012 International Conference on Convergence Information Technology Lecture Notes in Information Technology, Vol.19, 2012.]</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="96">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Justin Cheung</li>
+<li>Stephen Chou</li>
+<li>Pulkit Kakkar</li>
+<li>Evgeny Nam</li>
+<li>Yen-Cheng (Tony) Wu</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="78">
+<div align="center">7</div>
+</td>
+<td valign="middle" width="74%" height="78"><strong>Printing Press Scheduling Problem:&nbsp;</strong>in this problem there exist five pairs of cylinders between which the paper rolls and both sides of a page are printed simultaneously. There exist three kind of forms, namely 4-, 6- and 8-page forms, which are used to print the editions. The scheduling problem consists of deciding which form will be on which run and the length of each run. In the mTSP vocabulary, the plate change costs are the inter-city costs. For more details [Gorenstein, S. (1970). Printing press scheduling for multi-edition periodicals. Management Science, Vol. 16, No. 6, pp.B373&ndash;83 and Carter, A.E. &amp; Ragsdale, C.T. (2002). Scheduling pre-printed newspaper advertising inserts using genetic algorithms. Omega, Vol. 30, pp. 415&ndash;21].</td>
+<td valign="middle" width="23%" height="78">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="169">
+<div align="center">8</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="169"><strong>Credit Card Scoring:</strong>&nbsp;is a way of separating specific subgroups in a population of objects (such as applications for credit), which have significantly different credit risk characteristics. It is a classification problem that can be defined by a classification function assigning each object some categorical value called the class number. A utility function is used for separating objects belonging to different sets. Values of utility functions for objects from one class should be in the same range. &ldquo;The best&rdquo; utility function in some class is found by minimizing the error of misclassification. Ref. [Vladimir Bugera, Hiroshi Konno and Stanislav Uryasev, "Credit cards scoring with quadratic utility functions", Journal of Multi-Criteria Decision Analysis, Special Issue: MCDA Methodologies in Finance Volume 11, Issue 4-5, pages 197&ndash;211, July - October 2002], [Ekrem Duman, Ilker Elikucuk, "Solving Credit Card Fraud Detection Problem by the New Metaheuristics Migrating Birds Optimization," Lecture Notes in Computer Science Volume 7903, 2013, pp 62-71] and [ZVI DREZNER, GEORGE A. MARCOULIDES and MARK HOVEN STOHS, "Financial Applications of a Tabu Search Variable Selection Model", JOURNAL OF APPLIED MATHEMATICS AND DECISION SCIENCES, 5(4), 215&ndash;234, 2001.]</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="169">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Christopher Chong</li>
+<li>Jeremy Simpson</li>
+<li>Yi Hao Dong</li>
+<li>Christopher Fayoux</li>
+<li>Junwin Li</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="98">
+<div align="center">9</div>
+</td>
+<td valign="top" width="74%" height="98"><strong>Elevator Dispatching Problem:</strong>&nbsp;Elevator dispatching is a good example of a stochastic optimal control problem of economic importance that is too large to solve by classical techniques such as dynamic programming. The objective of elevator dispatching is to provide passengers with the shortest waiting times and the shortest time to destination. Ref.: [Richard S. Sutton and Andrew G. Barto. Reinforcement Learning: An Introduction. The MIT Press] and [Berna Bolata, Pablo Cort&eacute;s, &ldquo;Genetic and tabu search approaches for optimizing the hall call&mdash;Car allocation problem in elevator group systems,&rdquo; Applied Soft Computing 11 (2011) 1792&ndash;1800.]</td>
+<td valign="top" width="23%" height="98">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Douglas Lee</li>
+<li>Andrew Hassan</li>
+<li>Garrett Everding</li>
+<li>Samuel Cheung</li>
+<li>Ke Jian</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="98">
+<div align="center">10</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="98"><strong>Job Shop Scheduling Problem:</strong>&nbsp;Job shop scheduling is an optimization problem in which n jobs J1, J2, ..., Jn of varying sizes are given. These jobs need to be scheduled on m identical machines, while trying to minimize the makespan. The makespan is the total length of the schedule (that is, when all the jobs have finished processing). Ref. [Amin Jamili &amp; Mohammad Ali Shafia &amp; Reza Tavakkoli-Moghaddam, "A hybrid algorithm based on particle swarm optimization<br />and simulated annealing for a periodic job shop scheduling problem", Int J Adv Manuf Technol], [A. Garrido, M. A. Salido, F. Barber and M. A. L&oacute;pez, "Heuristic Methods for Solving Job-Shop Scheduling Problems", ] and [Milos Seda, "Mathematical Models of Flow Shop and Job Shop Scheduling Problems," World Academy of Science, Engineering and Technology 31 2007].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="98">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Rui Zhao</li>
+<li>Libin Bai</li>
+<li>Yuanqi Li</li>
+<li>Debin Li</li>
+<li>Bolun Yao</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="5">
+<div align="center">11</div>
+</td>
+<td valign="middle" width="74%" height="5"><strong>Assembly Line Balancing Problem (ALBP):</strong>&nbsp;An assembly line is a sequence of workstations connected together by a material handling system. It is used to assemble components into a final product. Balancing assembly lines is a difficult combinatorial optimization problem arising frequently in manufacturing. The Assembly Line Balancing Problem (ALBP) addresses assigning tasks (work elements) to workstations that minimize the amount of the idle time of the line, while satisfying specific constraints. Ref. [<span style="font-size: inherit;">Qi Lv, "Simple Assembly Line Balancing Using Particle Swarm Optimization Algorithm," International Journal of Digital Content Technology and its Applications. Volume 5, Number 6, June 2011</span><span style="font-size: inherit;"><span style="font-size: inherit;">] and [</span></span><span style="font-size: inherit;">Uğur &Ouml;ZCAN, Hakan &Ccedil;ER&Ccedil;ĐOĞLU, Hadi G&Ouml;K&Ccedil;EN, Bilal TOKLU, "A Tabu Search Algorithm for the Parallel Assembly Line&nbsp;</span><span style="font-size: inherit;">Balancing Problem," G.U. Journal of Science, 22(4): 313-323, 2009</span><span style="font-size: inherit;">].</span></td>
+<td valign="middle" width="23%" height="5">&nbsp;
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Kefan Xie</li>
+<li>Rey David Wu</li>
+<li>Varun Dave</li>
+<li>James Li</li>
+<li>---</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="5">
+<div align="center">12</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="5"><strong>Quadratic Assignment Problem (QAP):</strong>&nbsp;Given a number of n activities assigned to n locations. A distance is specified among each pair of locations, and weight or flow is specified among pairs of activities (representing transfer of data, material, etc.) The problem is to assign all activities to different locations (permutation) with the goal of minimising the sum of the distances multiplied by the corresponding flows. Quadratic: cost function depends on multiplication of distances by flows. Ref. [Samuel Gabrielsson. A Parallel Tabu Search Alglorithm for the Quadratic Assignment Problem. September 2007], [Gerald Paul, "Comparative performance of tabu search and simulated annealing heuristics for the quadratic assignment problem," Operations Research Letters 38 (2010) 577&ndash;581] and [Zvi Drezner , "Tabu Search and Hybrid Genetic Algorithms for Quadratic Assignment Problems," : Local Search Techniques: Focus on Tabu Search, Book edited by: Wassim Jaziri, ISBN 978-3-902613-34-9, pp. 278].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="5">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Aran Savundararasa</li>
+<li>Patrick Wojcik</li>
+<li>Sivaskanthan Jegatheswaran</li>
+<li>Amy Chang</li>
+<li>Hongzhe Yang&nbsp;</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="79">
+<div align="center">13</div>
+</td>
+<td valign="top" width="74%" height="79"><strong>School Bus Routing Problem:</strong>&nbsp;The objective of the scheduling is to obtain a bus loading pattern such that the number of routes is minimized, the total distance travelled by all buses is kept at minimum, no bus is overloaded and the time required to traverse any route does not exceed a maximum allowed policy. For problem modeling, see [Angel, R.D.; Caudle, W.L.; Noonan, R. &amp; Whinston, A. (1972). Computer assisted school bus scheduling. Management Science, Vol. 18, pp.279&ndash;88.], [Michela Spada, Michel Bierlaire, Thomas Liebling, "Decision-aid Methodology for the School BusRouting and Scheduling Problem," STRC 3rd Swiss Transport Research Conference Monte Verita / Ascona, March 19-21, 2003] and Yindong Shen . Tabu Search for Bus and Train Driver Scheduling. PhD Thesis, The University of Leeds, 2001.</td>
+<td valign="top" width="23%" height="79">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Shival Maharaj</li>
+<li>Akif Hossain</li>
+<li>Nicholas Kim</li>
+<li>James Kim</li>
+<li>Abdulmajeed Al-Dhalaan</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="67">
+<div align="center">14</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="67"><strong>Auto-tuning of a PID (Proportional-Integral-Derivative) Controller</strong>: PID controller is a generic control loop feedback mechanism (controller) widely used in industrial control systems. It is the most commonly used feedback controller. By tuning the three parameters in the PID controller algorithm, the controller can provide control action designed for specific process requirements. The response of the controller can be described in terms of the responsiveness of the controller to an error, the degree to which the controller overshoots the setpoint and the degree of system oscillation. Alaa Khamis, Adavanced Mechatronics Systems, Germanu University in Cairo,&nbsp;<a>Lecture L7-Dynamic Compensation-II</a>, Fall 2013.</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="67">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Nikolai Semenenko</li>
+<li>Didier Smith</li>
+<li>Josip Vulic</li>
+<li>Glenn Christian Sumido</li>
+<li>Shale Craig</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="227">
+<div align="center">15</div>
+</td>
+<td valign="top" width="74%" height="227"><strong>Voice Activity Detector (VAD)</strong>: a.k.a speech activity detection or speech detection is the problem of determining the presence of speech periods in a given audio signal. Several VAD techniques with different levels of recall and precision have been proposed. There is a number of evaluations metrics that can be used to quantitatively evaluate the efficiency of the VAD such as FEC, MSC, OVER and NDS. FEC (Front end clipping) is the clipping due to speech being misclassified as non-speech in the onset regions. MSC (Mid speech clipping) is the clipping due to speech being misclassified as non-speech in the speech regions. OVER (Carry over) is Non-speech interpreted as speech in the offset regions. NDS (Noise detected as speech) is Non-speech interpreted as speech in the non-speech regions. FEC and MSC are performance indicators similar to recall, while OVER and NDS are the break-down of precision [Pham Chau Khoa. Noise Robust Voice Activity Detection. Master's thesis, Nanyang Technological University, 2012]. Recall is more important than precision and it's related to the false alarms. Labelling speech as non-speech is more risky than labelling non-speech as speech. The VAD error rate (VER) and the false trigger rate (FTR) can be defined as follows: VER=FEC+MSC and FTR=OVER+NDS. It is always recommendable to optimally tune the parameter of the VAD in such a way that minimizes the sum of VAD error rate and false trigger rate. Ref.[Pham Chau Khoa. Noise Robust Voice Activity Detection. Master's thesis, Nanyang Technological University, 2012.]</td>
+<td valign="top" width="23%" height="227">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Michael Thiessen</li>
+<li>Roxanne Guo</li>
+<li>Fang Wang</li>
+<li>Kyle Olive</li>
+<li>Sean Aubin</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="37">
+<p align="center">16</p>
+</td>
+<td valign="middle" bgcolor="#F8E0EC" width="74%" height="37"><strong>Combinatorial Optimization in VLSI Design:&nbsp;</strong>chip is composed of basic elements, called cells, circuits, boxes, or modules. They usually have a rectangular shape, contain several transistors and internal connections, and have at least two pins (in addition to power supply). The pins have to be connected to certain pins of other cells by wires according to the netlist. A net is simply a set of pins that have to be connected, and the netlist is the set of all nets. The basic placement task is to place the cells legally "without overlaps" in the chip area. A feasible placement determines an instance of the routing problem, which consists of implementing all nets by wires. The quality of a placement depends on the quality of a wiring that can be achieved for this instance. For several reasons it is usually good if the wire length (the total length of the wires connecting the pins of a net) is as short as possible. [Ref.: Stephan Held, Bernhard Korte, Dieter Rautenbach, and Jens Vygen, "Combinatorial Optimization in VLSI Design"]</td>
+<td valign="middle" bgcolor="#F8E0EC" width="23%" height="37">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="69">
+<p align="center">17</p>
+</td>
+<td valign="middle" width="74%" height="69"><strong>Hot Rolling Scheduling Problem:</strong>&nbsp;In the iron and steel industry, orders are scheduled on the hot rolling mill in such a way that the total set-up cost during the production can be minimized. The solution of the model will yield a complete schedule for the hot strip rolling mill. The details of a recent application of modeling such problem can be read from [Tang, L.; Liu, J.; Rong, A. &amp; Yang, Z. (2000).A multiple traveling salesman problem model for hot rolling scheduling in Shangai Baoshan Iron &amp; Steel Complex. European Journal of Operational Research, Vol. 124, pp. 267&ndash;82.], [L. Nolle, D. A. Armstrong, A. A. Hopgood and J. A. Ware, "SIMULATED ANNEALING AND GENETIC ALGORITHMS APPLIED TO FINISHING MILL OPTIMISATION FOR HOT ROLLING OF WIDE STEEL STRIP,"International Journal of Knowledge-Based Intelligent Engineering Systems, Vol. 6, No. 2, April 2002] and [Leo Lopez, Michael W. Carter, Michel Gendreau, "The hot strip mill production scheduling problem: A tabu search approach," European Journal of Operational Research 106 ( 1998) 3 17-335].</td>
+<td valign="middle" width="23%" height="69">&nbsp;
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Austin Lee</li>
+<li>Tian Yu Zhang</li>
+<li>Collins Chung</li>
+<li>David Wang</li>
+<li>---</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="75">
+<div align="center">18</div>
+</td>
+<td valign="middle" bgcolor="#F8E0EC" width="74%" height="75"><strong>Overhauling Gas Turbine Engines:</strong>&nbsp;To guarantee a uniform gas flow through the turbines there are nozzle-guide vane assemblies located at each turbine stage. Such an assembly basically consists of a number of nozzle guide vanes affixed about its circumference. All these vanes have individual characteristics and the correct placement of the vanes can result in substantial benefits (reducing vibration, increasing uniformity of flow, reducing fuel consumption). The problem of placing the vanes in the best possible way can be modeled as a TSP with a special objective function. Ref. [Plante, R.D.; T.J. Lowe &amp; R. Chandrasekaran (1987). The Product Matrix Traveling Salesman Problem: An Application and Solution Heuristics. Operations Research, Vol. 35, pp.772-783.].</td>
+<td valign="middle" bgcolor="#F8E0EC" width="23%" height="75">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="114">
+<div align="center">19</div>
+</td>
+<td valign="top" width="74%" height="114"><strong>Computer Wiring</strong>: Modules are located on a computer board and a given subset of pins has to be connected. In contrast to the usual case where a Steiner tree connection is desired, here the requirement is that no more than two wires are attached to each pin. Hence we have the problem of finding a shortest Hamiltonian path with unspecified starting and terminating points. A similar situation occurs for the so-called testbus wiring. To test the manufactured board one has to realize a connection which enters the board at some specified point, runs through all the modules, and terminates at some specified point. For each module we also have a specified entering and leaving point for this test wiring. This problem also amounts to solving a Hamiltonian path problem with the difference that the distances are not symmetric and that starting and terminating point are specified. Ref. [Lenstra, J.K. &amp; A.H.G. Rinnooy Kan (1974). Some Simple Applications of the Travelling Salesman Problem. BW 38/74, Stichting Mathematisch Centrum, Amsterdam.].</td>
+<td valign="top" width="23%" height="114">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Keefer Davies</li>
+<li>Andrew Dawidek</li>
+<li>Pardeep Singh</li>
+<li>Brian Chow</li>
+<li>---</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="76">
+<p align="center">20</p>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="76"><strong>Wind Park Design Problem:</strong>&nbsp;This project addresses the problem associated with the optimal wind park design. A combinatorial optimization model for wind turbines type and number choice and placement considering the given wind conditions and wind park area will be developed. Ref.: [Ivan Mustakerov and Daniela Borissova, "Wind turbines type and number choice using combinatorial optimization", Renewable Energy 35 (2010) 1887&ndash;1894 and [Andrew Kusiak, Zhe Song, "Design of wind farm layout for maximum wind energy capture," Renewable Energy 35 (2010) 685&ndash;694].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="76">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Mai Wang</li>
+<li>Chao Gao</li>
+<li>Yi Kun Song</li>
+<li>Hong Wen Zhu</li>
+<li>Qi Feng Liu</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="103">
+<div align="center">21</div>
+</td>
+<td valign="middle" width="74%" height="103"><strong>Vehicle Suspension Design:</strong>&nbsp;The primary function of a suspension system of a vehicle is to isolate the road excitations experienced by the tires from being transmitted to the passengers. This design problem can be seen as an optimization problem with two objectives: minimizing the maximum bouncing acceleration of the sprung mass and minimizing average suspension displacement subject to a number of constraints. The constraints arise from the practical kinetic and comfortability considerations, such as limits of the maximum vertical acceleration of the sprung mass and the suspension working space. For more details [A.E. Baumal, J.J. McPhee, P.H. Calamai, &ldquo;Application of genetic algorithms to the design optimization of an active vehicle suspension system ,&rdquo; Computer Methods in Applied Mechanics and Engineering, Volume 163, Issues 1&ndash;4, 21 September 1998, Pages 87&ndash;94.]</td>
+<td valign="middle" width="23%" height="103">&nbsp;</td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="228">
+<div align="center">22</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="228"><strong>Robot Path Planning Problem:</strong>&nbsp;This problem is an interesting problem that has been studied extensively over the last two decades. This problem addresses how to find a collision-free path for a mobile robot from a start position to a given goal position, amidst a collection of obstacles. Path planning can be seen as an optimization problem which aims at improving some system objectives with several constraints. System objectives may be the travelling distance, travelling time, and consuming energy. However, the travelling distance is the most common objective. Beside this, the necessity of considering collisions avoidance and path smoothness makes the problem becoming more challenging. Ref. [Yun-Qian Miao Miao, Alaa Khamis, Mohamed Kamel, Fakhri Karray, &ldquo;A Novel Approach to Path Planning for Autonomous Mobile Robots&rdquo;, Journal of Control and Intelligent Systems, 2011.], [Yun-Qian Miao, Alaa Khamis, Mohamed Kamel, Fakhri Karray, "Global Optimal Path Planning for Mobile Robots based on Hybrid Approach with High Diversity and Memorization," International Conference on Autonomous and Intelligent Systems (AIS 2011), June 22-24, 2011, Burnaby, BC, Canada] and [H. Mostafa, A. Hussein, M. Badrel-din, O. Sultan and A. Khamis, &ldquo;Metaheuristic Optimization Approach to Mobile Robot Path Planning&rdquo;, International Conference on Engineering and Technology (ICET2012), New Cairo, 2012].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="228">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Nicolas Arciniega</li>
+<li>Nicholas Champion</li>
+<li>David Garcia</li>
+<li>Tawhid Mumtaz-Shah</li>
+<li>Gregory McGuire</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="187">
+<div align="center">23</div>
+</td>
+<td valign="top" width="74%" height="187"><strong>Mission Planning Problem:</strong>&nbsp;The mission planning problem consists of determining an optimal path for each army men (or planner) to accomplish the goals of the mission in the minimum possible time. In this problme, there are n planners, m goals which must be visited by some planners, and a base city to which all planners must eventually return. Simila routing problems arearising in the planning of unmanned aerial vehicle applications. See [Yu, Z.; Jinhai, L.; Guochang, G.; Rubo, Z. &amp; Haiyan, Y. (2002). An implementation of evolutionary computation for path planning of cooperative mobile robots.Proceedings of the fourth world congress on intelligent control and automation, Vol. 3, pp. 1798&ndash;802.], [Brummit, B. &amp; Stentz, A. (1998). GRAMMPS: a generalized mission planner for multiple mobile robots. Proceedings of the IEEE international conference on robotics and automation, May 1998.], [Ryan, J.L.; Bailey, T.G.; Moore, J.T &amp; Carlton, W.B. (1998). Reactive Tabu search in unmanned aerial reconnaissance simulations. Proceedings of the 1998 winter simulation conference, Vol. 1, pp . 873&ndash;9.] and [Brummit, B. &amp; Stentz, A. (1996). Dynamic mission planning for multiple mobile robots. Proceedings of the IEEE international conference on robotics and automation, April 1996.].</td>
+<td valign="top" width="23%" height="187">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Alex Laviolette</li>
+<li>Shi Shi</li>
+<li>Kyle Bennet</li>
+<li>Adam Watson</li>
+<li>Joe Price</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="5">
+<div align="center">24</div>
+</td>
+<td valign="middle" bgcolor="#F8E0EC" width="74%" height="5"><strong>Multirobot Control:&nbsp;</strong>Unintelligent carts are commonly found in large airports. Travelers pick up carts at designated points and leave them in arbitrary places. It is a considerable task to re-collect them. It is, therefore, desirable that intelligent carts (intelligent robots) draw themselves together automatically. Using mobile software agents to locate robots scattered in a field, e.g. an airport, and make them autonomously. The objective is to determine the moving behaviors of smart carts by using an metaheuristic optimization-based clustering algorithm. Resources must be used efficiently to maximize the benefit of utilizing a multirobot team. For example, in search and rescue time is of the utmost importance, while for planetary exploration fuel efficiency may be a primary concern. Ref. [Yasushi Kambayashi, Yasuhiro Tsujimura, Hidemi Yamachi, Munehiro Takimoto and Hisashi Yamamoto, &ldquo;Design of a Multi-Robot System Using Mobile Agents with Ant Colony Clustering&rdquo;, Proceedings of the 42nd Hawaii International Conference on System Sciences &ndash; 2009][Alaa Khamis,&nbsp;<a href="http://www.ras-egypt.org/reading/MRS.pdf">Cooperative Multirobot Systems</a>, Plenary Talk at IAC2014]</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="5">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Mohammed Sadat Islam</li>
+<li>Matthew Richard Longo</li>
+<li>Naveen Narayanan</li>
+<li>Johnny Wang</li>
+<li>Gordon Zhou</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="82">
+<div align="center">25</div>
+</td>
+<td valign="top" width="74%" height="82"><strong>Collective Robotic Search (CRS):</strong>&nbsp;A group of unmanned mobile robots are searching for a specified target in a high risk environment. Assumptions: A number of robots/particles are randomly dropped into a specified area and flown through the search space with one new position calculated for each particle per iteration; The coordinates of the target are known and the robots use a fitness function, in this case the Euclidean distance of the individual robots relative to the target, to analyze the status of their current position; Obstacle's boundary coordinates are known. Ref. [Smith, L., Venayagamoorthy, G. K. and Holloway, P. (2006): Obstacle Avoidance in Collective Robotic Search Using Particle Swarm Optimization. IEEE Swarm Intelligence Symposium, Indianapolis, Indiana, USA, May 2006.], [Alaa Khamis,&nbsp;<a href="http://www.ras-egypt.org/reading/MRS.pdf">Cooperative Multirobot Systems</a>, Plenary Talk at IAC2014] and [Qing-Hao Meng, Wei-Xing Yang, Yang Wang, Ming Zeng, " Multi-robot odor-plume tracing in indoor natural airflow environments using an improved ACO algorithm 2010 IEEE International Conference on Robotics and Biomimetics (ROBIO), 2010.]</td>
+<td valign="top" width="23%" height="82">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Manodasan Wignarajah</li>
+<li>Mohammad Khan</li>
+<li>Arvin Aminpour</li>
+<li>Alireza Pourhaj</li>
+<li>Ragulan Ravinthiran</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="89">
+<div align="center">26</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="89"><strong>Multiple Targets Clustering Problem:</strong>&nbsp;Clustering in a d-dimensional Euclidean space is the process of partitioning a given set of n points into a number, say k, of groups (or clusters) based on some similarity metric between objects. Suppose that it is required to track n targets using k mobile trackers. If the number of available trackers is less than the number of targets to be tracked, the targets can be grouped into a number of clusters equal to the number of trackers. Then the tracker can track the centroid of the cluster instead of the target itself. This clustering process is based on the positions of targets. Ref. [Ujjwal Maulik, Sanghamitra Bandyopadhyay, "Genetic algorithm-based clustering technique", Pattern Recognition 33 (2000)1455-1465.].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="89">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Zhechen Du</li>
+<li>Lingyuan Li</li>
+<li>Zhengfang Duanmu</li>
+<li>Yijie Liang</li>
+<li>Tao Shen</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="108">
+<div align="center">27</div>
+</td>
+<td valign="top" width="74%" height="108"><strong>Complex Task Allocation Problem:</strong>&nbsp;In mobile surveillance systems, complex task allocation addresses how to optimally assign a set of surveillance tasks to a set of mobile sensing agents to maximize overall expected performance, taking into account the priorities of the tasks and the skill ratings of the mobile sensors. Ref. Alaa Khamis, Ahmed Elmogy and Fakhreddine Karray, "Complex Task Allocation in Mobile Surveillance Systems," Journal of Intelligent and Robotic Systems, Springer], [Mohamed Badreldin, Ahmed Hussein and Alaa Khamis, "A Comparative Study between Optimization and Market-based Approaches to Multi-robot Task Allocation," Advances in Artificial Intelligence Journal, 2013.] and [Alaa Khamis,&nbsp;<a href="http://www.ras-egypt.org/reading/MRS.pdf">Cooperative Multirobot Systems</a>, Plenary Talk at IAC2014].</td>
+<td valign="top" width="23%" height="108">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Alexander Maguire</li>
+<li>Dane Carr</li>
+<li>Austin Dobrik</li>
+<li>Lucas Wojciechowski</li>
+<li>Ariel Weingarten</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="148">
+<div align="center">28</div>
+</td>
+<td valign="middle" bgcolor="#F8E0EC" width="74%" height="148"><strong>Camera Placement for Airport Surveillance:&nbsp;</strong>Multi-sensor surveillance systems are used to monitor or observe the behaviour of persons, processes, places, objects, etc. to determine whether they are functioning normally or if there is any deviation from their standard behaviour. These systems include a vast array of static and mobile sensors. Static sensors include, but not limited to, light sensors, temperature sensors, perimeter intrusion detector, sound sensors, fire detectors and cameras. Static sensor placement has an enormous impact on the performance of the surveillance system. Static sensor placement problem can be seen as a combinatorial problem that involves the placement of a set of N sensors with different fields of view in a set of M areas of interest. Suggested reading [Mohammad Reza Shams Amiri. Automated Camera Placement using Hybrid Particle Swarm Optimization. European Master in Computer Science, Blekinge Institute of Technology, 2014] and [N. Conci and L. Lizzi, |CAMERA PLACEMENT USING PARTICLE SWARM OPTIMIZATION IN VISUAL SURVEILLANCE APPLICATIONS", ICIP 2009].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="148">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Nicholas Lun</li>
+<li>Johnny Li</li>
+<li>Wilson Tran</li>
+<li>Freeman Kam</li>
+<li>Kent Ma</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="95">
+<div align="center">29</div>
+</td>
+<td valign="top" width="74%" height="95"><strong>Political Districting Problem</strong>: is defined as aggregating n sub-regions of a territory into m electoral districts subject to the following constraints: 1. The districts should have near-equal voting population, 2. The socio-economic homogeneity inside each district as well as the integrity of different communities should be maximized, 3. The districts have to be compact and the sub-regions of each district have to be contiguous and 4. Sub-regions should be considered as indivisible political units and their boundaries should be respected. Ref. [Burcin Bozkaya, Erhan Erkut, Gilbert Laporte, "A tabu search heuristic and adaptive memory procedure for political districting European Journal of Operational Research 144 (2003) 12-26] and [Sean L. Forman and Yading Yue, "Congressional Districting Using a TSP-Based Genetic Algorithm"].</td>
+<td valign="top" width="23%" height="95">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Raymond DiCecco</li>
+<li>Joel Phillip</li>
+<li>Theo Gugoiu</li>
+<li>Jacob Baechler</li>
+<li>Saba Z. Saba</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="141">
+<div align="center">30</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="141"><strong>Communication Relay for Unmanned Aerial Vehicles in Autonomous Search and Rescue Mission:&nbsp;</strong>The objective of this project is to simulate search and rescue scenarios where autonomous unmanned aerial vehicles are deployed to locate multiple rescue targets. When a target is found, the swarm of micro-aerial vehicles (MAVs) self-organizes to utilize their range-limited communication capabilities for setting up a communication relay network between the target and the base. This solution is appropriate for real-world situations where rescue targets are trapped on intraversable terrain with a limited radius of communication. Ref. [Sabine Hauert, Laurent Winkler, Jean-Christophe Zufferey and Dario Floreano, "Ant-based swarming with positionless micro air vehicles for communication relay," Swarm Intell (2008) 2: 167&ndash;188], [Wave Relay MANET Communication System Connects Swarming Unmanned Aerial Vehicles Persistent Systems, LLC, 2007] and [Alaa Khamis,&nbsp;<a href="http://www.ras-egypt.org/reading/MRS.pdf">Cooperative Multirobot Systems</a>, Plenary Talk at IAC2014].</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="141">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Robert Tran</li>
+<li>Anthony Ng</li>
+<li>Aaron Chung</li>
+<li>Asif Arman</li>
+<li>Avishesh Shah</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="105">
+<div align="center">31</div>
+</td>
+<td valign="middle" width="74%" height="105"><strong>Design of Global Navigation Satellite System Surveying (GNSS) Networks:</strong>&nbsp;A GNSS is a space-based satellite system which provides coverage for all locations worldwide and is quite crucial in real-life applications such as early warning and management for disasters, environment and agriculture monitoring, etc. The goal of surveying is to determine the geographical positions of unknown points on and above the earth using satellite equipment. These points, on which receivers are placed, are co-ordinated by a series of observation sessions. When there are multiple receivers or multiple working periods, the problem of finding the best order of sessions for the receivers can be formulated as an mTSP. For technical details refer [Saleh, H.A. &amp; Chelouah, R. (2004). The design of the global navigation satellite system surveying networks using genetic algorithms. Engineering Applications of Artificial Intelligence, Vol. 17, pp. 111&ndash;22.].</td>
+<td valign="middle" width="23%" height="105">&nbsp;<em style="font-size: inherit;">Assigned to:</em><ol>
+<li>Pranjal Singh</li>
+<li>Sola Ogunsakin</li>
+<li>Raul Jonathan Acevedo</li>
+<li>Ryan Zhang</li>
+<li>Greg O'Grady</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="5">
+<div align="center">32</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="5"><strong>Crowd Behavior During Emergency Evacuations:</strong>&nbsp;In case of mass emergencies and disasters, it has been observed that most victims were injured or killed by the misbehaviors of the crowd, rather than the actual cause (such as fire or explosion) of the disaster. Planning an evacuation strategy from public areas (such as buildings, shopping centers, stadiums, subways, train stations, airports, etc.) is a formidable problem due to the non-adaptive behaviors of the crowds and the unpredictable dynamics of the environment. Non-adaptive crowd behaviors refer to the destructive actions that a crowd may experience in emergency situations, such as stampede, pushing, knocking, and trampling on others, etc. These actions are responsible for a large number of injuries and deaths in man-made and natural disasters. Simulating human behaviors during emergency situations can help in predicting occupants&rsquo; distribution and planning an effective evacuation strategy. Understanding this behavior can also help in designing building&rsquo;s emergency exits, fire protection design and in emergency preparation.</td>
+<td valign="top" bgcolor="#F8E0EC" width="23%" height="5">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Anushervon Saidmuradov</li>
+<li>Aayushi Kaushik</li>
+<li>Desiyee Collier</li>
+<li>Sarah Chan</li>
+<li>Nigel Chan</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="116">
+<div align="center">33</div>
+</td>
+<td valign="top" width="74%" height="116"><strong>A Bio-Inspired Coordination Mechanism for a Swarm of Miniature Robots:</strong>Coordination addresses the interdependency management among the cooperative or competitive entities of the system in order to achieve their goals. The objective of this project is to design a bio-inspired coordination algorithm that can be used to manage a group of tiny robots in a search and rescue mission. The algorithm will be based on understanding the crowd dynamics during emergency evacuation. Simulating this behavior can be useful in predicting occupants' distribution and the whole evacuation process. This simulation model can be applied in fire protection design, emergency preparation and planning an evacuation strategy from public areas (such as buildings, stadiums, subways, train stations, shopping malls, airports, etc.).</td>
+<td valign="top" width="23%" height="116">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Shawn Tariq</li>
+<li>Adnan Alam</li>
+<li>Pranav chadha</li>
+<li>Michael Orschel</li>
+<li>Stephen Louli</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" bgcolor="#F8E0EC" width="3%" height="111">
+<div align="center">34</div>
+</td>
+<td valign="top" bgcolor="#F8E0EC" width="74%" height="111"><strong>Trajectory Planning and Assignment in Multirobot Systems:&nbsp;</strong>This problem addresses tasking large numbers of homogenous robots to move to a set of specified goal locations, addressing both the assignment and trajectory planning subproblems concurrently. This is related to the standard linear Euclidean assignment problem except that the solution to the trajectory generation subproblem must result in time-parameterized trajectories and guarantee collision avoidance.. Ref. [Matthew Turpin, Nathan Michael, and Vijay Kumar, "Trajectory Planning and Assignment in Multirobot Systems,"Algorithmic Foundations of Robotics X, Springer Tracts in Advanced Robotics Volume 86, 2013, pp 175-190].), and [Alaa Khamis,&nbsp;<a href="http://www.ras-egypt.org/reading/MRS.pdf">Cooperative Multirobot Systems</a>, Plenary Talk at IAC2014].</td>
+<td valign="middle" bgcolor="#F8E0EC" width="23%" height="111">
+<p><em>Assigned to:</em></p>
+<ol>
+<li>Jonathan Wei</li>
+<li>Alex Klen</li>
+<li>Jacob Abrahams</li>
+<li>Sanjay Menakuru</li>
+<li>Gurjant Kalsi</li>
+</ol></td>
+</tr>
+<tr>
+<td valign="top" width="3%" height="43">
+<div align="center">35</div>
+</td>
+<td valign="middle" width="74%" height="43"><strong>Design/Research Problem:</strong>&nbsp;Identify a combinatorial design/research problem in a pertinent area of academic, industrial or commercial importance for which there is no available solution with reasonable capabilities. Try to solve this problem using one of metaheuristic techniques studied in this course. Students can also select a problem related to their Engineering Design Project course where the studied metaheuristic techniques can be applied.</td>
+<td valign="middle" width="23%" height="43">&nbsp;</td>
+</tr>
+<tr>
+<td colspan="4" valign="top" height="5">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>Projects must be done in group of&nbsp;<strong>5</strong>&nbsp;students. Teamwork helps to achieve more than what could ever be achieved on your own, improve problem solving, foster creativity and innovation and improve decision making. Teams of students must conceive, design and develop the project. Different issues should be considered to form a collaborative team such as responsibility for assignment, team composition (hard and soft skills, previous academic performance, etc.) and the schedule of the team members (how easy to establish regular face-to-face meetings). Once team is formed, students should be willing to subordinate their personal preferences to the decisions of the team, and be willing to compromise in order to achieve a group consensus. As team work should have team rewards, team members will receive a common grade. However a free-riding team member will be penalized if a common and repetitive negative feedback (peer evaluations) received from the other team members. This feedback will be investigated before deciding the penalty. "<strong>Coming together is a beginning, keeping together is progress and working together is success</strong>", Henry Ford (1863-1947), founder of the Ford Motor Company and father of modern assembly lines.<br /><br /><br /><strong>Project Work Plan:</strong>&nbsp;a suggested work plan for the project can be downloaded here <a href="ECE457A-Project.pdf" target="_self">ECE457A-Project.pdf</a>.<br /><br /><br /><strong>Project Report:</strong>&nbsp;<br /><br />The objective of the final project is to provide a&nbsp;<strong>comparative study</strong>&nbsp;between different meta-heuristic optimization techniques to solve the selected problem. The project report must contain the following sections:&nbsp;<br /><br /><strong>Summary:</strong>&nbsp;The Summary should be a brief version of the full report. It should give the reader an accurate overview. Be brief, but be specific.&nbsp;<br /><br /><strong>1. Introduction:</strong>&nbsp;summarize the importance of the problem you are trying to solve and the reason that motivated you to select this project. Explain what was the problem or challenge that you were given? state the purpose of the project and how did you solve it? Enumerate the objectives of the project and describe in brief the structure of the report.&nbsp;<br /><br /><strong>2. Literature Review:</strong>&nbsp;Conduct a critical survey on similar solutions and explain how your solution extends or differs from these solutions.&nbsp;<br /><br /><strong>3. Problem Formulation and Modeling:</strong>&nbsp;Include the problem statement and describe its model.<br /><br /><strong>4. Proposed Solution:</strong></p>
+<ul>
+<li>Generate an initial solution.</li>
+<li>Suggest a cost function (objective function) suitable for this problem.</li>
+<li>Define a suitable neighborhood operator.</li>
+<li>Define a suitable solving strategy for this problem.</li>
+<li>Select your own values for the parameter and explain the basis for your selection.</li>
+<li>Describe how each algorithm (TS, SA, GA, PSO and ACO) will proceed to solve this problem by performing at least two hand iterations on a reduced version of the problem.</li>
+<li>Implement the proposed solution using Matlab/Octave.</li>
+</ul>
+<strong>5. Performance Evaluation:&nbsp;</strong>Establish a set of evaluation metrics and run some experiments with different values of algorithm parameters to&nbsp;<strong>quantitatively</strong>&nbsp;and qualitatively assess the performance of the developed solution using different meta-heuristic optimization techniques. Students must identify the pros and cons of each technique and assess the quality of work as well as its fit with project objectives.<br /><br /><strong>6. Conclusions &amp; Recommendations:</strong>&nbsp;summarize the conclusion and future improvement. Explain how did you solve the problem, what problems were met? what did the results show? And how to refine the proposed solution?You may organize ideas using lists or numbered points, if appropriate, but avoid making your report into a check-list or a series of encrypted notes&nbsp;<br /><br /><strong>References:</strong>&nbsp;Every report needs references; in fact, your failure to consult references for guidance may be considered negligence. On the other hand, when you include sentences, photos, drawings or figures from other sources in your report, the complete reference must be cited. Failure to do so is plagiarism, an academic infraction with serious consequences.
+<p><br /><strong>Project Delivery:</strong>&nbsp;<br /><br />In order to complete evaluating the project, each team has to prepare a CD/Memory Stick for the supervisor containing all materials related to the project (complete documentation report according to the course policy mentioned above + a well documented Matlab/Octave code and executable code with UserGuide that shows how to install and use the developed software).</p>
+</div>
+        </div>
+      
+          
+            </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="6" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2014</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

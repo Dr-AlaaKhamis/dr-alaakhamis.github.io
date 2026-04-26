@@ -1,0 +1,237 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ADD100: Metaheuristic Optimization Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="ADD100: Metaheuristic Optimization Algorithms, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2017 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="7"><img border="0" src="images/banner.png"  alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000" align="center"> 
+    <td class="content" width="80"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="projects.html"><font color="#FFFFFF">Project</font></a></td>
+    <td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="resources.html"><font color="#FFFFFF">Resources</font></a></td>
+
+
+	</tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td height="30" class="content" colspan="7">
+      <div class="pageTitle">ADD100: Metaheuristic Optimization Algorithms</div>
+      <div class="content"> 
+        <p align="justify">Using a multi-disciplinary perspective and reviewing fundamental theories, this course provides a comprehensive introduction to cooperative and adaptive algorithms and highlights the power of these computational techniques in solving complex problems. The course starts by addressing the ill-structured problems and the need for computational intelligence methods. It introduces the concepts of heuristics and their use in conjunction with search methods, game playing and constraint satisfaction methods. The course presents in details different trajectory-based and population-based search techniques. Topics to be covered include: search algorithms, game playing, constraints satisfaction, meta-heuristics, tabu search, simulated annealing, evolutionary computing methods, swarm intelligence, ant-colony algorithms and particle swarm methods. Adaptive and cooperative aspects of these algorithms are highlighted. Different in-depth case studies are discussed to show the ability of these cooperative and adaptive algorithms in solving continuous and discrete problems that arise in different areas of engineering such as manufacturing cells formation, robot motion planning, job scheduling, cell assignment, vehicle routing problem, assembly line balancing, shortest sequence planning, sensor placement, unmanned-aerial vehicles (UAV) communication relaying and multirobot coordination to name just a few. </p>
+        </div>
+      <div class="content"> <b>Course Objectives: </b> 
+        <ul >
+          <li>Introduce cooperative and adaptive algorithms and highlights the power of these computational 
+            techniques in solving complex problems.</li>
+          <li>To understand non-biological system-based and biological system-based 
+            metaheuristic techniques such as tabu search, simulated annealing, 
+            genetic algorithms, ant colony optimization and particle swarm optimization.</li>
+          <li>To provide methodological fundamentals for decentralized optimization.</li>
+          <li>To discuss different in-depth case studies to show the ability of 
+            these cooperative and adaptive algorithms in solving continuous and 
+            discrete problems.</li>
+        </ul>
+      </div>
+      <div class="content"><b>Course Topics:</b><br>
+        <br>
+        The course covers different cooperative and adaptive metaheuristic techniques and their applications in different areas of engineering. 
+        Metaheuristic algorithms can be classified into trajectory-based and population-based 
+        algorithms. A trajectory-based metaheuristic algorithm such as simulated 
+        annealing use a single agent or solution which moves through the design 
+        space or search space in a piecewise style. A better move or solution 
+        is always accepted, while a not-so-good move can be accepted with certain 
+        probability. The steps or moves trace a trajectory in the search space, 
+        with a non-zero probability that this trajectory can reach the global 
+        optimum. On the other hand, population-based algorithms such as genetic 
+        algorithms, ant colony optimization and particle swarm optimization use 
+        multiple agents to search for an optimal or near-optimal solution. The following topics are covered in this course: <br>
+        <br>
+        <table border="0" celpadding="0" cellspacing="0" width="64%" class="content" height="200">
+          <tr style="background-color:#1C2833"> 
+            <td width="560"> 
+              <div align="left"><font face="Verdana" size="2" color="#FFFFFF"><b> 
+                &nbsp;Introductory Concepts</b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#C5F3F3"> 
+            <td width="560" height="25" > 
+              <ul>
+                <li>Optimization Theory and Combinatorics</li>
+                <li>Graph-search Algorithms</li>
+                <li>Metaheuristics</li>
+              </ul>
+            </td>
+          </tr>
+		    <td width="560" style="background-color:#1C2833"> 
+              <div align="left"><font face="Verdana" size="2" color="#FFFFFF"><b>&nbsp;Trajectory-based 
+                Metaheuristic Algorithms</b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#EDFEDF"> 
+            <td width="560" height="21" > 
+              <ul>
+                <li>Tabu Search</li>
+                <li>Simulated Annealing</li>
+              </ul>
+            </td>
+          </tr>
+          <tr style="background-color:#1C2833"> 
+            <td width="560"> 
+              <div align="left"><font face="Verdana" size="2" color="#FFFFFF"><b>&nbsp;Population-based 
+                Metaheuristic Algorithms</b></font></div>
+            </td>
+          </tr>
+          <tr  bgcolor="#FECEC7"> 
+            <td width="560" height="57" > 
+              <ul>
+                <li>P-Metaheuristics</li>
+                <li>Evolutionary Computation</li>
+                <li>Genetic Algorithms</li>
+                <li>Swarm Intelligence</li>                
+                <li>Particle Swarm Optimization</li>
+				<li>Ant Colony Optimization</li>
+              </ul>
+            </td>
+          </tr>
+		  
+		           <tr  bgcolor="#D0D0D0"> 
+            <td width="560" height="2" bgcolor="#1C2833" ><font face="Verdana" size="2" color="#FFFFFF"><b>Self-study 
+              Algorithms</b></font></td>
+          </tr>
+          <tr  bgcolor="#D0D0D0"> 
+            <td width="560"> 
+              <ul>
+                <li>Bat algorithm</li>
+                <li> Firefly algorithm</li>
+                <li> Artificial bee colony (ABC) algorithm</li>
+                <li> Grey wolf optimizer</li>
+                <li> Ant lion optimizer</li>
+                <li> Intelligent Water Drops (IWD)</li>
+                <li> River formation dynamics (RFD) </li>
+                <li> Stochastic Diffusion Search (SDS)</li>
+                <li> Harmony Search (HS) algorith</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <p> <b>Course Instructor: </b><a href="http://www.alaakhamis.org/">Alaa 
+          Khamis</a> <br>
+        </p>
+
+             <p align="justify"><b>Textbook: <br>
+          </b>- A. Engelbrecht. <i>Fundamentals of Computational Swarm Intelligence</i>. 
+          Wiley, 2006. <br>
+          - Xin-SheYang. <i>Engineering Optimization: An Introduction with Metaheuristic 
+          Applications.</i> A JOHN WILEY & SONS, INC., 2010.<br>
+          - Singiresu S. Rao. <i>Engineering Optimization: Theory and Practice</i>. 
+          A John Wiley & Sons, INC., 2009.<br>
+          - C. Revees. <i>Modern Heuristic Techniques for Combinatorial Problems</i>. 
+          Halsted Press, New York, 1993.<br>
+          <br>Lectures will be based mainly, but not exclusively, on material in these textbooks and other resources. Lectures will not follow the same sequence as the material presented in the texts.</p>
+            </div>
+          
+            </td>
+        </tr>
+		
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="7" bgcolor="#000000"> 
+      <div class="footer"><font color="white">Sypron Solutions - Advanced Development Division (ADD) &#169; Dr. Alaa Khamis 2017</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

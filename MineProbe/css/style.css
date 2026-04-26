@@ -1,0 +1,145 @@
+.container { 
+	width: auto;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+.pageLogo {
+    width: 100%;
+    max-width: 250px;
+    padding: 5px;
+}
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.pageRDILogo {
+	float: right;
+    width: 100%;
+    max-width: 250px;
+}
+.pageHeader {
+	margin-top: 10px;
+	padding-bottom: 20px;
+}
+.container {
+	border-bottom: 1px solid #EEE;
+	margin-bottom: 10px;
+}
+.pageSubHeader {
+	text-align: center;
+	padding: 10px;
+}
+.row-centered {
+    text-align: center;
+}
+.col-centered {
+    display: inline-block;
+    float: none;
+    /* reset the text-align */
+    text-align: left;
+    /* inline-block space fix */
+    margin-right: -4px;
+    vertical-align: middle;
+}
+.navbar {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+.navbar-nav {
+	margin: 0px;
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+}
+.navbar-collapse {
+    padding: 0px;
+}
+@media (min-width: 768px) {
+	.navbar-nav > li {
+	    display: inline-block;
+	    float: none;
+	    vertical-align: middle;
+	}
+}
+.navbar .navbar-collapse {
+	text-align: center;
+}
+.navbarHeaderArrow {
+	color: #777;
+    float: left; 
+    height: 50px; 
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 18px; 
+    line-height: 20px;
+}
+.navbarHeaderText {
+	color: #777; 
+	float: left; 
+	height: 50px; 
+    padding: 15px 0px 15px 10px;
+    font-size: 18px; 
+    line-height: 20px;
+    white-space: nowrap
+}
+.navbarHeaderText:focus,
+.navbarHeaderText:hover {
+	color: #5E5E5E;
+	background-color: transparent;
+    text-decoration: none;
+}
+.homeIntro,
+.newsEvents,
+.landminesPage,
+.contactInfo {
+	text-align: justify;
+	padding: 10px 30px;
+}
+@media (max-width: 768px) {
+	.partner {
+		margin-bottom: 20px;
+	}
+	.partnersImages {
+		margin-left: auto;
+		margin-right: auto;
+		max-height: 120px;
+	}
+}
+@media (min-width: 768px) {
+	.partner {
+		margin-bottom: 40px;
+	}
+	.partnersImages {
+		margin-left: auto;
+		max-height: 120px;
+	}
+}
+.partnerType {
+	margin-bottom: 5px;
+	text-align: center;
+}
+.partnersSep {
+	margin-bottom: 20px;
+	text-align: center;
+}
+.fundingAgencyImages {
+	margin-left: auto;
+	margin-right: auto;
+}
+.landminesImage {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.landminesPageSecondRow {
+	padding-top: 20px;
+}
+.landminesPageRef {
+	padding: 10px 30px;
+}
+.landminesPageRefItem,
+.resourcesItem {
+	text-align: justify;
+	padding: 5px 10px 0px 10px;
+}

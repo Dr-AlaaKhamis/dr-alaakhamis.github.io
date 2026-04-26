@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>SYDE 522 Machine Intelligence</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="SYDE 522 Machine Intelligence, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Machine Intelligence, Artificial Intelligence, Bayesian, Markov decision process, decision trees, Neural Networks, Fuzzy Logic, Learning, Reinforcement Learning, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, SYDE 522" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="436">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="71" colspan="7"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td class="content" width="93" height="2"> 
+      <div align="center"><a href="index.html"><font color="#FFFFFF">Home</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="report.html"><font color="#FFFFFF">Midterm 
+        Report</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></div>
+    </td>
+    <td class="content" width="176" height="2"> 
+      <div align="center"><a href="policies.html"><font color="#FFFFFF">Evaluation 
+        and Policy</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></div>
+    </td>
+    <td class="content" width="126" height="2"> 
+      <div align="center"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></div>
+    </td>
+  </tr>
+		<tr bgcolor="#FFFFFF"> 
+    <td height="390" class="content" colspan="7"> 
+      <div class="pageTitle">Midterm Report</div>
+       
+      <p>The midterm report can be prepared in a group of maximum 4 students (same 
+        group as the course project). This report consists of two components:</p>
+      <div class="content">
+        <table border="0" celpadding="0" cellspacing="0" width="97%" class="content" height="304">
+          <tr style="background-color:#999999"> 
+            <td width="710"> <font face="Verdana" size="2"><b>A: Critical Literature 
+              Survey Paper</b></font> </td>
+          </tr>
+          <tr bgcolor="#F8E0EC"> 
+            <td width="710" height="90"> 
+              <ul>
+                <li>&nbsp;Students will pick a machine intelligence problem that 
+                  interests them.</li>
+                <li>&nbsp;The students will be asked to put themselves in the 
+                  shoes of authors of a conference or a journal survey paper.</li>
+                <li>&nbsp;They are supposed to search the literature for approaches 
+                  to tackle this problem.</li>
+                <li>&nbsp;They survey and discuss the relative strengths of each 
+                  approach.</li>
+                <li>&nbsp;Then they suggest a taxonomic classification of these 
+                  approaches showing how they are related or how they can be classified 
+                  based on different well-defined criteria.</li>
+                <li>&nbsp;The paper will be 4-6 pages. Student must comply strictly 
+                  with the formatting instructions using <a href="http://www.ieee.org/conferences_events/conferences/publishing/templates.html">IEEE Manuscript Templates</a>.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr style="background-color:#999999"> 
+            <td width="710"> 
+              <div align="left"><font face="Verdana" size="2"><b>B: Paper Critics</b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#F5FBEF"> 
+            <td width="710" height="84"> 
+              <ul>
+                <li>&nbsp;The students must pick a paper recently published (2013-2015) 
+                  in one of the journals/transactions/magazines listed below.</li>
+                <li>&nbsp;The students will be asked to put themselves in the 
+                  shoes of a reviewer for a conference or journal.</li>
+                <li>&nbsp;They should give constructive feedback to the authors. 
+                </li>
+                <li>&nbsp;They will mention the good and weak aspects of the paper. 
+                </li>
+                <li>&nbsp;For every criticism, students will make a suggestion 
+                  to improve the paper. </li>
+                <li>&nbsp;<a href="projects/Paper%20Critics%20Form.doc">Paper 
+                  Critics form</a> must be used.</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </div>
+      <p><br>
+        <b>Paper Critics Sources with their 2013/2014 impact factors:</b> <br>
+        <a href="http://www.computer.org/portal/web/tpami">IEEE Transactions on 
+        Pattern Analysis and Machine Intelligence</a> [Impact factor=4.795] <br>
+        <a href="http://www.sciencedirect.com/science/journal/00043702">Artificial 
+        Intelligence </a> [Impact factor=3.008]<br>
+        <a href="http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=10207">IEEE 
+        Computational Intelligence Magazine</a>[Impact factor=2.706]<br>
+        <a href="http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=70">IEEE 
+        Transactions on Robotics and Automation</a> [Impact factor=2.649]<br>
+        <a href="http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=100%20">IEEE 
+        Robotics &amp; Automation Magazine</a> [Impact factor=2.319]<br>
+        <a href="http://www.springer.com/computer/ai/journal/10994">Springer Machine 
+        Learning Journal</a> [Impact factor=1.689]<br>
+        <a href="http://www.ijrr.org/">International journal of robotics research 
+        </a>[Impact factor=1.318] <br>
+        <a href="http://www.sciencedirect.com/science/journal/09521976">Engineering 
+        Applications of Artificial Intelligence </a>[Impact factor=0.762 ]<br>
+        <a href="http://www.journalfieldrobotics.org/Home.html">Journal of field 
+        robotics </a>[Impact factor=0.960]<br>
+        <a href="http://www.wfs.org/futurist">The Futurist</a> [Impact factor=0.04] 
+      </p>
+      
+    </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="7" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2015</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

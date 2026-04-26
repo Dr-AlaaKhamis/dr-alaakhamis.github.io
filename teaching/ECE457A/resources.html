@@ -1,0 +1,390 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ECE457A: Cooperative and Adaptive Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Metaheuristic Optimization and Their Applications in Robotics and Automation, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="6"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000"> 
+    <td class="content" width="100"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="100"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="100"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></td>
+	<td class="content" width="150"><a href="policies.html"><font color="#FFFFFF">Evaluation and Policy</font></a></td>
+    <td class="content" width="100"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></td>
+    <td class="content" width="100"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></td>
+        </tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td height="1031" class="content" colspan="6"> 
+      <div class="pageTitle">Resources</div><br>
+      <div class="content"> 
+        <div class="content"><strong>Meta-heuristic Optimization</strong><br />
+          <table class="content" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="11"><span><a href="http://dev.heuristiclab.com/trac/hl/core/wiki/UsersManual">HeuristicLab</a>: 
+                Framework for Heuristic and Evolutionary Algorithms</span></td>
+            </tr>
+            <tr> 
+              <td width="572"><a href="http://opt4j.sourceforge.net/">Opt4J:</a>&nbsp;Meta-heuristic 
+                Optimization Framework for Java</td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td><a href="http://www.cilib.net/">CIlib</a>: a collaborative component 
+                based framework for developing Computational Intelligence software</td>
+            </tr>
+            <tr> 
+              <td width="572"><a href="http://www.mathworks.com/products/optimization/">MATLAB 
+                Optimization Toolbox</a></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"><a href="http://jmetal.sourceforge.net/">jMetal:&nbsp;</a>Metaheuristic 
+                Algorithms in Java</td>
+            </tr>
+            <tr> 
+              <td><a href="http://paradiseo.gforge.inria.fr/index.php?n=Main.HomePage">Paradiseo</a>: 
+                a C++ white-box object-oriented framework dedicated to the reusable 
+                design of metaheuristics</td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"><a href="http://eodev.sourceforge.net/">Evolving 
+                Objects (EO)</a>: a C++ framework</td>
+            </tr>
+            <tr> 
+              <td width="572"><a href="http://www.tik.ee.ethz.ch/sop/pisa/">PISA</a>: 
+                A Platform and Programming Language Independent Interface for 
+                Search Algorithms</td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="7"><a href="http://sourceforge.net/projects/uof/">UOF</a>: 
+                a C++-based Unified Optimization Framework</td>
+            </tr>
+            <tr> 
+              <td height="7"><a href="http://www.jboss.org/drools/drools-planner">Drools 
+                Planner</a>: Java open source framework can deal with NP hard 
+                planning problems by using meta-heuristic algorithms.</td>
+            </tr>
+            </tbody> 
+          </table>
+          <br />
+          <strong>Search Techniques</strong><br />
+          <table class="content" style="height: 36px; width: 708px;" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="17"> 
+                <div align="left"><span><a href="http://dasl.mem.drexel.edu/Hing/BFSDFSTutorial.htm">Tutorial</a></span></div>
+              </td>
+            </tr>
+            <tr> 
+              <td height="19"><span><a href="http://www.mathworks.com/matlabcentral/fileexchange/10922">MatlabBGL 
+                library</a>: provides robust and efficient graph algorithms for 
+                Matlab using native data structures</span></td>
+            </tr>
+            </tbody> 
+          </table>
+          <br />
+          <strong>Tabu Search</strong><br />
+          <table class="content" style="height: 36px; width: 707px;" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="17"> 
+                <div align="left"><span><a href="http://www.cse.unt.edu/~garlick/teaching/4310/assign/TS%20-%20Tutorial.pdf">Tabu 
+                  Search: A Tutorial</a></span></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="572" height="19"><span><a href="http://www.coin-or.org/Ots/index.html">OpenTS</a>:a 
+                Java Tabu Search Framework</span></td>
+            </tr>
+            </tbody> 
+          </table>
+          <br />
+          <strong>Simulated Annealing</strong><br />
+          <table class="content" style="height: 121px; width: 706px;" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="16"><a href="http://www.mit.edu/~dbertsim/papers/Optimization/Simulated%20annealing.pdf">Simulated 
+                Annealing</a></td>
+            </tr>
+            <tr> 
+              <td width="572" height="18"><a href="http://www.mathworks.com/matlabcentral/fileexchange/10548">MATLAB 
+                General Simulated Annealing Algorithm</a></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"><a href="http://www.mathworks.com/products/global-optimization/description7.html">Simulated 
+                Annealing Solver - MATLAB Global Optimization Toolbox</a></td>
+            </tr>
+            <tr> 
+              <td width="572" height="18"><a href="http://www.mathworks.com/matlabcentral/fileexchange/9612-traveling-salesman-problem-tsp-using-simulated-annealing">Traveling 
+                Salesman Problem (TSP) using Simulated Annealing</a></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="16"> 
+                <div align="left"><span><a href="http://dev.heuristiclab.com/trac/hl/core/wiki/UsersManual">HeuristicLab</a>: 
+                  Framework for Heuristic and Evolutionary Algorithms</span></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="572" height="15"><span><a href="http://www.theblueplanet.org/JSimul/html/JSimul_readme.html">JSimul</a>: 
+                JAVA-based Simulated Annealing Package</span></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="17"><a href="http://www.codeproject.com/KB/recipes/SimulatedAnnealing.aspx">Simulated 
+                Annealing Example in C#</a></td>
+            </tr>
+            </tbody> 
+          </table>
+          <br />
+          <strong>Genetic Algorithms</strong><br />
+          <table class="content" style="height: 194px; width: 706px;" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"><a href="http://www.mathworks.com/products/global-optimization/index.html">MATLAB 
+                Global Optimization Toolbox</a></td>
+            </tr>
+            <tr> 
+              <td width="572"> 
+                <div align="left"><a href="http://www.mathworks.com/help/toolbox/gads/f6691.html">MATLAB 
+                  Genetic Algorithm Examples</a></div>
+              </td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"> 
+                <div align="left"><a href="http://www.mathworks.com/matlabcentral/fileexchange/15164">MATLAB 
+                  SpeedyGA: A Fast Simple Genetic Algorithm</a></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="572"><span><a href="http://dev.heuristiclab.com/trac/hl/core/wiki/UsersManual">HeuristicLab</a>: 
+                Framework for Heuristic and Evolutionary Algorithms</span></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="18"> 
+                <div align="left"><a href="http://jgap.sourceforge.net/">JGAP 
+                  Java Genetic Algorithm Package</a></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="572" height="18"><a href="http://www.ra.cs.uni-tuebingen.de/software/JavaEvA/">JavaEVA:</a>&nbsp;A 
+                Java based framework for Evolutionary Algorithms</td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="18"><a href="http://watchmaker.uncommons.org/">Watchmaker</a></td>
+            </tr>
+            <tr> 
+              <td width="572" height="18"><a href="http://cs.gmu.edu/~eclab/projects/ecj/">ECJ</a>: 
+                A Java-based Evolutionary Computation Research System</td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td height="18"><a href="http://jclec.sourceforge.net/">JCLEC</a>: 
+                a software system for Evolutionary Computation (EC) research, 
+                developed in the Java programming language</td>
+            </tr>
+            <tr> 
+              <td width="572" height="18"> 
+                <div align="left"><a href="http://ccl.northwestern.edu/netlogo/models/SimpleGeneticAlgorithm">NetLogo 
+                  Simple Genetic Algorithm</a></div>
+              </td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572" height="18"> 
+                <div align="left"><a href="http://lancet.mit.edu/ga/">C++ Library 
+                  of Genetic Algorithm Components</a></div>
+              </td>
+            </tr>
+            </tbody> 
+          </table>
+        </div>
+        <div class="content"> 
+          <div class="content"><br />
+            <strong>Particle Swarm Optimization</strong><br />
+            <table class="content" style="height: 152px; width: 705px;" border="0" cellspacing="0">
+              <tbody> 
+              <tr bgcolor="#F8E0EC"> 
+                <td width="572"><a href="http://www.particleswarm.info" target="_blank">Particle 
+                  Swarm Central</a></td>
+              </tr>
+              <tr> 
+                <td width="572"><a href="http://www.swarmintelligence.org/">Particle 
+                  Swarm Optimization</a></td>
+              </tr>
+              <tr bgcolor="#F8E0EC"> 
+                <td width="572"><a href="http://www.mathworks.com/matlabcentral/fileexchange/7506">MATLAB 
+                  Particle Swarm Optimization Toolbox</a></td>
+              </tr>
+              <tr bgcolor="#F8E0EC"> 
+                <td> 
+                  <div align="left"><a href="http://sourceforge.net/projects/psotoolbox/">Particle 
+                    Swarm Optimization toolkit (with GUI)</a></div>
+                </td>
+              </tr>
+              <tr> 
+                <td width="572"> 
+                  <div align="left"><a href="http://www.cilib.net/">CIlib</a>: 
+                    a collaborative component based framework for developing Computational 
+                    Intelligence software</div>
+                </td>
+              </tr>
+              <tr bgcolor="#F8E0EC"> 
+                <td width="572" height="18"> 
+                  <div align="left"><a href="http://jswarm-pso.sourceforge.net/">JSwarm-PSO</a>: 
+                    a Particle swarm optimization package written in Java</div>
+                </td>
+              </tr>
+              <tr style="background-color: #ffffff;"> 
+                <td width="572" height="18"> 
+                  <div align="left"><a href="http://ccl.northwestern.edu/netlogo/models/ParticleSwarmOptimization">NetLogo 
+                    Particle Swarm Optimization</a></div>
+                </td>
+              </tr>
+              <tr bgcolor="#F8E0EC"> 
+                <td width="572" height="18"> 
+                  <div align="left"><a href="http://www.projectcomputing.com/resources/psovis/index.html" target="_blank">Particle 
+                    Swarm Optimization (PSO) Visualisation (or "PSO Visualization")</a></div>
+                </td>
+              </tr>
+              </tbody> 
+            </table>
+            &nbsp;</div>
+        </div>
+        <div class="content"><strong>Ant-Colony Optimization</strong><br />
+          <table class="content" style="height: 102px; width: 706px;" border="0" cellspacing="0">
+            <tbody> 
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"><a href="http://iridia.ulb.ac.be/~mdorigo/ACO/ACO.html">Ant-Colony 
+                Optimization</a></td>
+            </tr>
+            <tr> 
+              <td width="572"><a href="http://www.mathworks.com/matlabcentral/fileexchange/?term=ant">MATLAB 
+                ACO</a></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td width="572"> 
+                <div align="left"><a href="http://www.ugosweb.com/Documents/jacs.aspx">JACSF 
+                  Java Ant Colony</a></div>
+              </td>
+            </tr>
+            <tr> 
+              <td width="572"><a href="http://ccl.northwestern.edu/netlogo/models/Ants">NetLogo 
+                Ants</a></td>
+            </tr>
+            <tr bgcolor="#F8E0EC"> 
+              <td><a href="http://www.cilib.net/">CIlib</a>: a collaborative component 
+                based framework for developing Computational Intelligence software</td>
+            </tr>
+            <tr> 
+              <td width="572"> 
+                <div align="left"><a href="http://www.aco-metaheuristic.org/aco-code/">Other 
+                  public software</a></div>
+              </td>
+            </tr>
+            </tbody> 
+          </table>
+        </div>
+        <p>&nbsp;</p>
+</div>
+        <p>&nbsp;</p>
+     
+          
+            </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="6" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2014</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

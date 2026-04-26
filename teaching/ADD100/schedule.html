@@ -1,0 +1,249 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ADD100: Metaheuristic Optimization Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="ADD100: Metaheuristic Optimization Algorithms, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2017 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="7"><img border="0" src="images/banner.png"  alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000" align="center"> 
+    <td class="content" width="80"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="projects.html"><font color="#FFFFFF">Project</font></a></td>
+	<td class="content" width="30"><font color="#FFFFFF">|</font></td>	
+    <td class="content" width="80"><a href="resources.html"><font color="#FFFFFF">Resources</font></a></td>
+
+
+	</tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td class="content" colspan="7"> 
+      <div class="pageTitle">Schedule</div>
+        <div class="content"> 
+        <br>
+
+
+
+
+              <div class="content"> 
+                <table border="1" celpadding="0" cellspacing="0" width="100%" class="content">
+                  <tr style="background-color:#999999" height="40"> 
+                    <td width="57"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Week</b></font></div>
+                    </td>
+                    <td width="158"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Date</b></font></div>
+                    </td>
+                    <td width="500"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Lectures</b></font></div>
+                    </td>
+                   <td width="327"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Reading Material</b></font></div>
+                    </td> 
+					</tr>
+				  
+			
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">1</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Jan 31</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2"><a href="slides/L1-Introduction.pdf" target="_blank">Course Presentation and Introduction</a></font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#FEF9E7"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">2</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Feb 7</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2"><a href="slides/L2-Optimization Theory.pdf" target="_blank">Optimization Theory</a></font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->				
+
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">3</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Feb 14</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2"><a href="slides/L3-Graph Search.pdf" target="_blank">Graph Search Algorithms</a></font></div></td>
+					<td width="327" height="35" align="center"><a href="code/motion_planning.7z" target="_blank">Sample code</a></td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#FEF9E7"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">4</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Feb 21</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2"><a href="slides/L4-TS.pdf" target="_blank">Tabu Search (TS)</a></font></div></td>
+					<td width="327" height="35" align="center"><a href="reading/TS-Glover.pdf" target="_blank">Glover Tutorial</a><br><a href="codeL4-Code.7z" target="_blank">Sample code</a></td>
+                  </tr>
+				  <!-- End week block -->				
+
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">5</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Feb 28</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Simulated Annealing (SA)</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#FEF9E7"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">6</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Mar 7</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Genetic Algorithms (GA)</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->				
+				  
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">7</font></div></td>
+					<td width="158" height="35"><div align="center"><font face="Verdana" size="2">Mar 14</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Particle Swarm Optimization (PSO)</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#FEF9E7"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">8</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Mar 21</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Ant Colony Optimization (ACO)</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->	
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#C2F8F8"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">9</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Mar 28</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Projection Submission</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->	
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#FC813C"> 
+                    <td width="57" height="35"><div align="center"><font face="Verdana" size="2">10</font></div></td>
+                    <td width="158" height="35"><div align="center"><font face="Verdana" size="2">Apr 4</font></div></td>
+                    <td width="327" height="35"><div align="center"><font face="Verdana" size="2">Projection Presentation</font></div></td>
+					<td width="327" height="35" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->	
+				  
+                </table>
+              </div>
+             
+            </div>
+          </td>
+
+
+
+        </div>
+        
+            </td>
+        </tr>
+		
+  
+	
+
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="7" bgcolor="#000000"> 
+      <div class="footer"><font color="white">Sypron Solutions - Advanced Development Division (ADD) &#169; Dr. Alaa Khamis 2017</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

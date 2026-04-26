@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Autonomous Vehicles Design and Control</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Autonomous Vehicles Design and Control, Dr. Alaa Khamis." />
+<meta name="keywords" content="Alaa, Khamis, Robots, Autonomous, Vehicles, Design, Control" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2011 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7"">
+
+<table width="934" border="0" cellpadding="0" cellspacing="0" bgcolor="#858585" height="609">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="71" colspan="2"><img border="0" src="images/banner.png" ></td>
+  </tr>
+  <tr> 
+    <td width="119" height="498" valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="113" height="284">
+        <tr> 
+          <td height="3" width="53"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="53">&nbsp;<a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="projects.html">Projects</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498"> 
+      <table width="785" border="0" cellpadding="0" cellspacing="0" height="668">
+        <!--DWLayoutTable-->
+        <tr> 
+          <td width="785" height="495" valign="top"> 
+            <div class="pageTitle"><br>
+              Course Policies</div>
+           <div class="content"> 
+              <p><b>Grading Policy:</b></p>
+              <table border="0" celpadding="0" cellspacing="0" width="60%" class="content">
+                <tr bgcolor="#00CC99"> 
+                  <td colspan="3"><b><font face="Verdana" size="2">Evaluation 
+                    Method</font></b></td>
+                  <td width="250"> 
+                    <div align="center"><b>Weight</b></div>
+                  </td>
+                </tr>
+				<tr> 
+                  <td colspan="3">Assignments</td>
+                  <td width="250"> 
+                    <div align="center">10% (2.5X4 assignments)</div>
+                  </td>
+                </tr>
+                <tr bgcolor="#F8E0EC"> 
+                  <td colspan="3">Midterm Report</td>
+                  <td width="250"> 
+                    <div align="center">10%</div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td colspan="3">Midterm Exam</td>
+                  <td width="250"> 
+                    <div align="center">25%</div>
+                  </td>
+                </tr>
+                <tr bgcolor="#F8E0EC"> 
+                  <td colspan="3">Project</td>
+                  <td width="150"> 
+                    <div align="center">20%</div>
+                  </td>
+                </tr>
+                <tr > 
+                  <td colspan="3">Final Exam</td>
+                  <td width="250"> 
+                    <div align="center">35%</div>
+                  </td>
+                </tr>
+                <tr bgcolor="#00FFCC" > 
+                  <td colspan="3" height="17">Total</td>
+                  <td width="250" height="17"> 
+                    <div align="center">100%</div>
+                  </td>
+                </tr>
+              </table>
+              <br>
+			
+			<div class="content">			
+            <b>Late Submission Policy:</b><br>
+            <ul>
+              <li>Anything submitted after 11:59PM on the due date will be penalized by 50% for each 24 hours of lateness.</li>
+			</ul>
+			</div>
+			
+			<div class="content">			
+            <b>Absence Policy:</b><br>
+            <ul>
+				 <li>Attendance in all academic activities is mandatory.</li>
+				 <li>Students who are absent more than 25% of the time in any course should not be permitted to attend the final examination and should receive a W grade.</li>
+				 <li>Students are permitted to miss up to three lectures or tutorials without a valid excuse.</li>
+				 <li>Students who miss more than 3 lectures or tutorials must have points deducted from their attendance grade (5% of the course grade).</li>
+				 <li>Students are allowed to make up one lab absence with an approved petition.</li>
+				 <li>No makeup exams should be offered for missed exams.</li>
+				 <li>Late work policy due to absence are left to the course coordinator who may refuse to accept late work, accept it with a deduction or accept it at full grade with a valid excuse.</li>
+			</ul>
+			</div>
+			
+
+			<div class="content">			
+            <b>Academic Integrity Policy:</b><br>
+            <ul>
+              <li>Students are required to refrain from any and all forms of dishonorable or unethical conduct related to their academic work including.
+			  	<br><b>Plagiarism:</b> Submitting material that is in part or whole is not entirely one’s own work without properly citing sources. Plagiarism includes, but is not limited to:
+				<br>1) Submitting a copied piece of writing as original work
+				<br>2) The quotation or other use of another person’s words, ideas, opinions, thoughts, or theories (even if paraphrased into one’s own words) without acknowledgment of the source
+				<br>3) The quotation or other use of facts, statistics, or other data or materials (including images) that are not clearly common knowledge without acknowledgment of the source.
+					
+				<br><b>Fabrication:</b> Falsifying or inventing any information, data, or citation; presenting data that were not gathered in accordance with standard guidelines defining the appropriate methods for collecting or generating data and failing to include an accurate account of the method by which the data were gathered or collected including the incorrect documentation of a source;
+				<br>1)	The citation, in a bibliography or other list of references, of sources that were not used to prepare the academic work;
+				<br>2)	The inclusion in an academic work of falsified, invented, or fictitious data or information, or the deliberate and knowing concealment or distortion of the true nature, origin, or function of such data or information
+				<br>3)	 The unauthorized submission of an academic work prepared totally or in part by another
+				<br><b>Cheating:</b> Cheating is defined as fraud, deceit, or dishonesty in an academic assignment, or using or attempting to use materials, or assisting others in using materials that are prohibited or inappropriate in the context of the academic assignment in question
+			  </li>
+             
+			  </ul>
+			</div>
+			
+			
+
+	
+          </td>
+        </tr>
+      </table>
+    <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#5f5f5f"> 
+      <div class="footer">&#169; Dr. Alaa Khamis 2016-2017</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

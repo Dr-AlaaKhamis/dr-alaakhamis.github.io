@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>SYDE 522 Machine Intelligence</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="SYDE 522 Machine Intelligence, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Machine Intelligence, Artificial Intelligence, Bayesian, Markov decision process, decision trees, Neural Networks, Fuzzy Logic, Learning, Reinforcement Learning, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, SYDE 522" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="1363" >
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="71" colspan="7"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td class="content" width="93" height="2"> 
+      <div align="center"><a href="index.html"><font color="#FFFFFF">Home</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="report.html"><font color="#FFFFFF">Midterm 
+        Report</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></div>
+    </td>
+    <td class="content" width="176" height="2"> 
+      <div align="center"><a href="policies.html"><font color="#FFFFFF">Evaluation 
+        and Policy</font></a></div>
+    </td>
+    <td class="content" width="117" height="2"> 
+      <div align="center"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></div>
+    </td>
+    <td class="content" width="126" height="2"> 
+      <div align="center"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></div>
+    </td>
+  </tr>
+		<tr bgcolor="#FFFFFF"> 
+    <td  class="content" colspan="7" height="1319"> 
+      <div class="pageTitle">Projects</div><br>
+        
+      <div class="content"> 
+        <p>Team-based projects are integrated as an essential part of the course. 
+          These projects help students to get hands-on experience in applying 
+          different techniques studied in this course in the development of intelligent 
+          algorithms/systems. Students select one of the options listed below 
+          for which they will undertake an independent investigation and apply 
+          the studied algorithms in the course to solve a selected problem. Course 
+          instructor and TAs will provide support to help the students with searching 
+          and using the literature, analyzing the challenging aspects of the problem 
+          and writing the final paper of the project. The programming parts of 
+          the project must be implemented in <b>Matlab/Octave</b>.<br>
+          <br>
+          Projects must be done in group of <b>4</b> students. Teamwork helps 
+          to achieve more than what could ever be achieved on your own, improve 
+          problem solving, foster creativity and innovation and improve decision 
+          making. Teams of students must conceive, design and develop the project. 
+          Different issues should be considered to form a collaborative team such 
+          as responsibility for assignment, team composition (hard and soft skills, 
+          previous academic performance, etc.) and the schedule of the team members 
+          (how easy to establish regular face-to-face meetings). Once team is 
+          formed, students should be willing to subordinate their personal preferences 
+          to the decisions of the team, and be willing to compromise in order 
+          to achieve a group consensus. As team work should have team rewards, 
+          team members will receive a common grade. However a free-riding team 
+          member will be penalized if a common and repetitive negative feedback 
+          (peer evaluations) received from the other team members. This feedback 
+          will be investigated before deciding the penalty.<br>
+          <br>To register, please fill 
+          in the <a href="projects/SYDE522-Teams%20template.xlsx">registration 
+          form</a> before <b>Friday January 16, 2015 and submit it to your <a href="mailto:akhamis@pami.uwaterloo.ca">course 
+          instructor</a>'s eamil address</b>. The following project options are 
+          available:<br>
+        </p>
+        <table border="0" celpadding="0" cellspacing="0" width="97%" height="322" class="content" >
+          <tr style="background-color:#999999"> 
+            <td width="710" height="22"> 
+              <div align="left"><font face="Verdana" size="2"><b>Option A (Application): 
+                </b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#F8E0EC"> 
+            <td width="710" height="44"> 
+              <ul>
+                <li> &nbsp;Students identify a problem in a pertinent area of 
+                  industrial and commercial importance such as surveillance, search 
+                  and rescue, environment monitoring, industrial process control/monitoring, 
+                  space exploration, pipeline assembly and inspection, intelligent 
+                  transportation systems, rehabilitation, health care and home 
+                  intelligence to name but a few.</li>
+                <li>&nbsp;They explore the applicability of the different algorithms 
+                  studied in the course to solve this problem.</li>
+                <li>&nbsp;Students choose a machine intelligence approach to handle 
+                  this problem to be implemented and justify their choice.</li>
+                <li> They analyze experimentally the performance of the implemented 
+                  algorithm.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr style="background-color:#999999"> 
+            <td width="710" height="20"> 
+              <div align="left"><font face="Verdana" size="2"><b>Option B (Comparative 
+                Study): </b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#F5FBEF"> 
+            <td width="710" height="61"> 
+              <ul>
+                <li>&nbsp;Students will pick a challenging machine intelligence 
+                  problem that interests them such adaptive speed/steering control, 
+                  pedestrian detection and tracking, speech recognition, natural 
+                  language understanding, voice emotion recognition, face recognition, 
+                  facial expression recognition, predictive maintenance/analytics, 
+                  learning motion primitives, PID auto-tuning, spam filtering, 
+                  etc.</li>
+                <li>&nbsp;Survey several approaches to tackle this problem.</li>
+                <li>&nbsp;They conduct a comparative study between at least two 
+                  of the surveyed approaches to quantitatively and qualitatively 
+                  evaluate these approaches in terms of a number of well-defined 
+                  evaluation metrics and preferably using a benchmark dataset 
+                  if available.</li>
+              </ul>
+            </td>
+          </tr>
+          <tr style="background-color:#999999"> 
+            <td width="710" height="22"> 
+              <div align="left"><font face="Verdana" size="2"><b>Option C (Algorithm 
+                design): </b></font></div>
+            </td>
+          </tr>
+          <tr bgcolor="#F8E0F7"> 
+            <td width="710" height="72"> 
+              <ul>
+                <li>&nbsp;Students identify a machine intelligence problem for 
+                  which there are no satisfying approaches. These problems include, 
+                  but are not limited to, behavior/plan recognition, threat evaluation, 
+                  context-awareness systems, situation awareness, cooperative 
+                  mapping/mointoring, learning in multiagent systems, group formation, 
+                  communication relaying of UAVs/AGVs, dynamic task allocation, 
+                  and self-X capabilities of fully autonomous systems (self-configuration, 
+                  self-management, adaptability, self-diagnosis, self-protection, 
+                  self-healing and self-repair self-optimization, self-synchronization 
+                  and self-organization). </li>
+                <li>&nbsp;Develop a new technique to tackle this problem.</li>
+                <li>&nbsp;Analyze theoretically and/or empirically the performance 
+                  of their technique.</li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        <p><b>Course Project Paper:</b> <br>
+          <br>
+          The result of the course project will be a scientific paper (minimum 
+          5 pages) along with part of the source code developed to solve a given 
+          problem. <a href="http://www.ieee.org/conferences_events/conferences/publishing/templates.html">IEEE Manuscript Template</a> must be used. The paper must contain the following:<br>
+          <br>
+          <b>Summary:</b> The Summary should be a brief version of the full paper. 
+          It should give the reader an accurate overview. Be brief, but be specific. 
+          <br>
+          <br>
+          <b>1. Introduction:</b> summarize the importance of the problem you 
+          are trying to solve and the reason that motivated you to select this 
+          project. Explain what was the problem or challenge that you were given? 
+          state the purpose of the project and how did you solve it? Enumerate 
+          the objectives of the project and describe in brief the structure of 
+          the paper. <br>
+          <br>
+          <b>2. Literature Review:</b> Conduct a critical survey on similar solutions 
+          and explain how your solution extends or differs from these solutions. 
+          <br>
+          <br>
+          <b>3. Problem Formulation and Modeling:</b> Include the problem statement 
+          and describe its model.<br>
+          <br>
+          <b>4. Proposed Solution: </b>describe your proposed approach to solve 
+          the selected problem (DON'T include source code in the paper). Pseudocode 
+          can be used. <br>
+          <br>
+          <b>5. Performance Evaluation: </b>Establish a set of evaluation metrics 
+          and run some experiments with different settings and/or values of algorithm 
+          parameters to <b>quantitatively</b> and qualitatively assess the performance 
+          of the developed solution. Students must identify the pros and cons 
+          of the experimented techniques and assess the quality of work as well 
+          as its fit with project objectives.<br>
+          <br>
+          <b>6. Conclusions:</b> summarize the conclusion and future improvement. 
+          Explain how did you solve the problem, what problems were met? what 
+          did the results show? And how to refine the proposed solution?You may 
+          organize ideas using lists or numbered points, if appropriate, but avoid 
+          making your paper into a check-list or a series of encrypted notes. 
+          <br>
+          <br>
+          <b>References:</b> Every paper needs references; in fact, your failure 
+          to consult references for guidance may be considered negligence. On 
+          the other hand, when you include sentences, photos, drawings or figures 
+          from other sources in your paper, the complete reference must be cited. 
+          Failure to do so is plagiarism, an academic infraction with serious 
+          consequences. 
+        <p><br>
+            <b>Project Delivery:</b> <br>
+            <br>
+            In order to complete evaluating the project, each team has to upload to designated DROPBOX on LEARN all materials related to the project 
+            (final course project paper according to the course policy mentioned above + a well documented Matlab/Octave code and executable code with 
+            ReadMe/UserGuide that shows how to install and use the developed software).<br>
+            </div>
+      
+          
+            </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="7" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2015</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

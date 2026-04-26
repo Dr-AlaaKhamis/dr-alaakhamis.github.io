@@ -1,0 +1,385 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>BSE122: Computer Programming</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Computer Programming, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Robots, Sensors, Surveillance, Cooperation, Computer, Programming, UC3M, Suez, Alexandria, Germany" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2016 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="1023" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="609">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="102" colspan="2"><img border="0" src="images/banner.png" width="1036" height="130"></td>
+  </tr>
+  <tr> 
+    <td width="127" height="498" valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="127" height="284">
+        <!-- fwtable fwsrc="menu.png" fwbase="menu.gif" fwstyle="Dreamweaver" fwdocid = "3376386" fwnested="0" -->
+        <tr> 
+          <td height="3" width="127"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="127"><a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498" width="905"> 
+      <table width="905" border="0" cellpadding="0" cellspacing="0" height="495">
+        <!--DWLayoutTable-->
+        <tr> 
+          <td width="811" height="449" valign="top"> 
+          
+			<div class="pageTitle"><br>Schedule For Spring 2016-2017</div>
+              <div class="content"> <br>
+                
+              <table border="1" celpadding="0" cellspacing="0" width="97%" class="content">
+                <tr style="background-color:#999999"> 
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2"><b>Week</b></font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center"><font face="Verdana" size="2"><b>Date</b></font></div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2"><b>Lectures</b></font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><font face="Verdana" size="2"><b>Assignments/Tutorials/Code</b></font></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="57" height="19"> 
+                    <div align="center"><font face="Verdana" size="2">1</font></div>
+                  </td>
+                  <td width="158" height="19"> 
+                    <div align="center"><font face="Verdana" size="2">9-13 Oct.</font></div>
+                  </td>
+                  <td width="327" height="19"> 
+                    <div align="center"><font face="Verdana" size="2"><a href="slides/L1-Introduction.pdf" target="_blank">Course Presentation 
+                      and Introduction</a></font></div>
+                  </td>
+                  <td width="201" height="19"><div align="center">&nbsp;</div></td>
+                </tr>
+                <tr> 
+                  <td width="57" height="12"> 
+                    <div align="center"><font face="Verdana" size="2">2</font></div>
+                  </td>
+                  <td width="158" height="12"> 
+                    <div align="center"><font face="Verdana" size="2">16-20 Oct.</font></div>
+                  </td>
+                  <td width="327" height="12"> 
+                    <div align="center">&nbsp;</div>
+                  </td>
+                  <td width="201" height="12"><div align="center"><a href="slides/Evolution.pdf" target="_blank">The Evolution of a Programmer</a></div> </td>
+                </tr>
+                <tr> 
+                  <td width="57" height="18"> 
+                    <div align="center">3</div>
+                  </td>
+                  <td width="158" height="18"> 
+                    <div align="center"><font face="Verdana" size="2">23-27 Oct. 
+                      </font></div>
+                  </td>
+                  <td width="327" height="18"> 
+                    <div align="center"><a href="slides/L2-Programming in MATLAB.pdf" target="_blank">Programming in Matlab/Octave</a>
+					</div>
+                  </td>
+                  <td width="201" height="18"> 
+                    <div align="center">&nbsp;</div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="57" height="18"> 
+                    <div align="center">4</div>
+                  </td>
+                  <td width="158" height="18"> 
+                    <div align="center"><font face="Verdana" size="2">30 Oct. 3 Nov.</font></div>
+                  </td>
+                  <td width="327" height="18"> 
+                    <div align="center"><a href="slides/L3-SequentialAlgorithms.pdf" target="_blank">Sequential Algorithms</a></div>
+                  </td>
+                  <td width="201" height="18"> 
+                    <div align="center"><a href="code/L3-Code.7z" target="_blank">L3-Code</a>, <a href="assignments/Assignment-1.pdf" target="_blank">Assignment-1</a></div>
+                  </td>
+                </tr>
+                
+               
+                <tr> 
+                  <td width="57" height="16"> 
+                    <div align="center"><font face="Verdana" size="2">5</font></div>
+                  </td>
+                  <td width="158" height="16"> 
+                    <div align="center"><font face="Verdana" size="2">6-10 Nov.</font></div>
+                  </td>
+                  <td width="327" height="16"> 
+                    <div align="center"><a href="slides/L4-Conditional Algorithms.pdf" target="_blank">Conditional Algorithms</a></div>
+                  </td>
+                  <td width="201" height="16"><div align="center"><a href="code/L4-Code.7z" target="_blank">L4-Code</a></div></td>
+                </tr>
+
+		
+
+                <tr> 
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">6</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">13-17 Nov.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><a href="slides/L5-Iterative Algorithms.pdf" target="_blank">Iterative Algorithms</a></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><a href="code/L5-Code.7z" target="_blank">L5-Code</a>, <a href="assignments/Assignment-2.pdf" target="_blank">Assignment-2</a></div>
+                  </td>
+                <tr > 
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">7</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center"><font face="Verdana" size="2">13-17 Nov.</font></div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><a href="slides/L6-Data Visualization.pdf" target="_blank">Data Visualization</a></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><a href="code/L6-Code.7z" target="_blank">L6-Code</a></div>
+                  </td>
+                </tr>
+               
+
+		 <tr  bgcolor="#F5A9A9"> 
+                  <td width="57"> 
+                    <div align="center"><b><font face="Verdana" size="2">8</font></b></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center"><font face="Verdana" size="2"><b>20 Nov.</b></font></div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2"><b>Midterm 
+                      Exam</b></font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><font face="Verdana" size="2">&nbsp;</font></div>
+                  </td>
+                </tr>
+
+
+                <tr > 
+                  <td width="57" height="21"> 
+                    <div align="center"><font face="Verdana" size="2">9</font></div>
+                  </td>
+                  <td width="158" height="21"> 
+                    <div align="center">27 Nov.- 1 Dec.</div>
+                  </td>
+                  <td width="327" height="21"> 
+                    <div align="center"><a href="slides/L7-Descriptive Analytics.pdf" target="_blank">Descriptive Analytics</a></div>
+                  </td>
+                  <td width="201" height="21"> 
+                    <div align="center"><a href="code/L7-Code.7z" target="_blank">L7-Code</a></div>
+                  </td>
+                </tr>
+                <tr> 
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">10</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">4-8 Dec.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2">&nbsp;</font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center">&nbsp;</div>
+                  </td>
+                </tr>
+
+		 <tr > 
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">11</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">11-15 Dec.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2"><a href="slides/L8-Data Regression.pdf" target="_blank">Data Regression</a></font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><a href="code/L8-Code.7z" target="_blank">L8-Code</a>, <a href="assignments/Assignment-3.pdf" target="_blank">Assignment-3</a>, <a href="assignments/reserves.xlsx" target="_blank">Dataset of the assignment</a></div>
+                  </td>
+                </tr>
+
+
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">12</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">18-22 Dec.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2"><a href="slides/L9-Numerical Analysis.pdf" target="_blank">Numerical Analysis</a></font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><a href="code/L9-Code.7z" target="_blank">L9-Code</a></div>
+                  </td>
+                </tr>
+				
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">13</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">25-29 Dec.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2"><a href="slides/L10-Optimization.pdf" target="_blank">Optimization Techniques</a></font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><a href="code/L10-Code.7z" target="_blank">L10-Code</a></div>
+                  </td>
+                </tr>
+
+                  <td width="57"> 
+                    <div align="center"><font face="Verdana" size="2">14</font></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center">1-5 Jan.</div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><font face="Verdana" size="2">Revision</font></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center">&nbsp;</div>
+                  </td>
+                </tr>
+				
+				
+		<tr bgcolor="#00FFFF"> 
+                  <td width="57"> 
+                    <div align="center"><b><font face="Verdana" size="2">15</font></b></div>
+                  </td>
+                  <td width="158"> 
+                    <div align="center"><b>8-19 Jan.</b></div>
+                  </td>
+                  <td width="327"> 
+                    <div align="center"><b><font face="Verdana" size="2">Final 
+                      Exams</font></b></div>
+                  </td>
+                  <td width="201"> 
+                    <div align="center"><b>Sunday January 22, 216</b></div>
+                  </td>
+                </tr>
+
+
+              </table>
+              </div>
+             
+          
+              </td>
+        </tr>
+      </table>
+      <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#000000"> 
+      <div class="footer">&#169; Dr. Alaa Khamis 2016-2017</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

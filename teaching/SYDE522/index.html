@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>SYDE 522 Machine Intelligence</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="SYDE 522 Machine Intelligence, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Machine Intelligence, Artificial Intelligence, Bayesian, Markov decision process, decision trees, Neural Networks, Fuzzy Logic, Learning, Reinforcement Learning, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, SYDE 522" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="71" colspan="7"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  <tr bgcolor="#000000"> 
+    <td class="content" width="93"> 
+      <div align="center"><a href="index.html"><font color="#FFFFFF">Home</font></a></div>
+    </td>
+    <td class="content" width="117"> 
+      <div align="center"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></div>
+    </td>
+    <td class="content" width="117"> 
+      <div align="center"><a href="report.html"><font color="#FFFFFF">Midterm 
+        Report</font></a></div>
+    </td>
+    <td class="content" width="117"> 
+      <div align="center"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></div>
+    </td>
+    <td class="content" width="176"> 
+      <div align="center"><a href="policies.html"><font color="#FFFFFF">Evaluation 
+        and Policy</font></a></div>
+    </td>
+    <td class="content" width="117"> 
+      <div align="center"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></div>
+    </td>
+    <td class="content" width="126"> 
+      <div align="center"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></div>
+    </td>
+  </tr>
+  <tr bgcolor="#FFFFFF"> 
+    <td height="30" class="content" colspan="7"> 
+      <div class="pageTitle">SYDE 522 Machine Intelligence</div>
+      <div class="content"> 
+        <p align="justify">Intelligent machines can function and interact autonomously 
+          within unstructured, dynamic and sometimes partially observable environments. 
+          These machines employ intelligent techniques to mimic human intelligence 
+          in decision making, problem solving, learning from the environment and 
+          adapting to its changes. The course provides a comprehensive introduction 
+          to the key machine intelligence concepts and techniques involved in 
+          the development of intelligent machines. These techniques can be used 
+          to endow the machines with low-level and high-level cognitive faculties 
+          such as ability to handle data imperfection aspects such as uncertainty 
+          and vagueness, ability to solve problems via metaheuristics, ability 
+          to take a decision under uncertainty and ability to learn from examples 
+          and from observation. Team-based projects are integrated as an essential 
+          part of the course. These projects help students to get hands-on experience 
+          in applying different techniques studied in this course in the development 
+          of intelligent algorithms/systems. Topics to be covered include: Bayesian 
+          framework, fuzzy logic, trajectory-based and population-based metaheuristics, 
+          decision trees, neural networks and reinforcement learning. </p>
+      </div>
+      <div class="content"> <b>Course Objectives: </b> 
+        <ul >
+          <li>To understand the basic concepts behind machine intelligence</li>
+          <li>To learn how to handle uncertainty and vagueness as two main data 
+            imperfection aspects</li>
+          <li>To learn different meta-heuristics for problem solving</li>
+          <li>To learn decision making under uncertainty</li>
+          <li>To understand different machine learning techniques and how to verify 
+            the learning capabilities of a given technique via proper theoretical 
+            and experimental tools</li>
+          <li>To learn how to choose the right intelligent technique for a given 
+            problem and how to overcome the limitations of individual techniques 
+            through hybridization or the fusion of various techniques</li>
+        </ul>
+      </div>
+      <div class="content"><b>Course Topics:</b> 
+        <ul >
+          <li>Introduction to machine intelligence</li>
+          <li>Handling uncertainty using Bayesian framework</li>
+          <li>Dealing with vagueness using fuzzy logic</li>
+          <li>Problem solving via trajectory-based and population-based metaheuristics</li>
+          <li>Making decisions under uncertainty using decision trees</li>
+          <li>Decision tree learning</li>
+          <li>Learning from examples using neural networks</li>
+          <li>Learning from observation using reinforcement learning</li>
+          <li>Hybrid intelligent systems</li>
+        </ul>
+        <br>
+        <p> <b>Prerequisite: </b>One of SYDE 223, MTE 140, ECE 250, CS 240 and Systems Design Engineering or level at least 4A Mechatronics Engineering or Mechatronics Option or Computer Engineering Option.</p>
+        <p><b>Antirequisites: </b>ECE 457A</p>
+				
+        <br>
+        <p> <b>Course Instructor: </b><a href="http://www.alaakhamis.org/">Alaa 
+          Khamis</a> <br>
+          <b>Email: </b>akhamis[at]pami[dot]uwaterloo[dot]ca<b><br>
+          Office: </b>TBD<br>
+          <b>Office hours:</b> Fridays 16:00-17:20PM</p>
+        <p align="justify"><b>Course TA: </b> Eric Hunsberger<br>
+          <b>TBD</b><br>
+          Email: ehunsberger[at]uwaterloo[dot]ca<br>
+          Office: TBD<br>
+          Office hours: TBD<br>
+        </p>
+        
+        <p align="justify"><br>
+         <b>Lecture date and venue:</b>Tuesdays and Thursdays 18-19:20 in E5 6006
+         <br><b>Tutorial date and venue:</b> Fridays 11:30-12:20 in E5 6002.</p>   
+        
+        <p align="justify"><b>Textbook:</b> <br>
+          No particular textbook will be used. A list of several reference books 
+          will be provided.</p>
+      </div>
+    </td>
+  </tr>
+  <!-- InstanceEndEditable -->
+  <tr> 
+    <td height="28" colspan="7" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2015</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,439 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Mct/ROB/200 Robotics</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Home page of Dr. Alaa Khamis, University of Waterloo." />
+<meta name="keywords" content="Alaa, Khamis, Robots, Sensors, Surveillance, Cooperation, Interaction, Engineering, SANET, GUC, Waterloo, UC3M, Suez, Alexandria, Germany" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2009 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="934" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="2105">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="104" colspan="2"><img border="0" src="images/banner.png" width="932" height="118" alt="Robots I worked with: Merlin, TOM, B21, Magellan Pro, Atrv, Maggie, CRS, PeopleBot, Khepera, SANet"></td>
+  </tr>
+  <tr> 
+    <td width="119"  valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="113" height="284">
+        <!-- fwtable fwsrc="menu.png" fwbase="menu.gif" fwstyle="Dreamweaver" fwdocid = "3376386" fwnested="0" -->
+        <tr> 
+          <td height="3" width="53"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="119"><a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="self.html">Self-Study</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="project.html">Project</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="119"><a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498"> 
+      <table width="785" border="0" cellpadding="0" cellspacing="0" height="1833">
+        <!--DWLayoutTable-->
+        <tr>
+          <td width="785" valign="top" bgcolor="#FFFFFF"> 
+            <div class="pageTitle"><br>
+              Mini-project</div>
+            <div class="content"> <br>
+              <p>Projects can be done individually but preferably in group of 
+                maximum 4 students. Teamwork helps to achieve more than what could 
+                ever be achieved on your own, improve problem solving, foster 
+                creativity and innovation and improve decision making. Teams of 
+                students must conceive, design and develop the chosen project. 
+                Different issues should be considered to form a collaborative 
+                team such as responsibility for assignment, the optimal team size 
+                (from 1 to 4 students), team composition (hard and soft skills, 
+                previous academic performance, gender, ethnicity, etc.) and the 
+                schedule of the team members (how easy to establish regular face-to-face 
+                meetings). Once team is formed, students should be willing to 
+                subordinate their personal preferences to the decisions of the 
+                team, and be willing to compromise in order to achieve a group 
+                consensus. As team work should have team rewards, team members 
+                will receive a common grade. However a free-riding team member 
+                will be penalized if a common and repetitive negative feedback 
+                (peer evaluations) received from the other team members. This 
+                feedback will be investigated before deciding the penalty. &quot;<b>Coming 
+                together is a beginning, keeping together is progress and working 
+                together is success</b>&quot;, Henry Ford (1863-1947), founder 
+                of the Ford Motor Company and father of modern assembly lines.<br>
+                <br>
+                The following options are available:</p>
+              <table border="0" celpadding="0" cellspacing="0" width="97%" height="164" class="content" >
+                <tr style="background-color:#999999"> 
+                  <td width="710" height="22"> 
+                    <div align="left"><font face="Verdana" size="2"><b>Type A: 
+                      System Design and Implementation</b></font></div>
+                  </td>
+                </tr>
+                <tr bgcolor="#F5FBEF"> 
+                  <td width="710" height="69"> 
+                    <ul>
+                      <li>Students identify a problem in a pertinent area of academic, 
+                        industrial or commercial importance for which there are 
+                        no available system with reasonable cost and capabilities. 
+                        This system must contain a combination of mechanical, 
+                        electronic, computer and control components integrated 
+                        together in order to solve the problem at hand.</li>
+                      <li>Design and develop a new robotic system to solve this 
+                        problem.</li>
+                      <li>Analyze experimentally the performance of the developed 
+                        system.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr style="background-color:#999999"> 
+                  <td width="710" height="22"> 
+                    <div align="left"><font face="Verdana" size="2"><b>Type B: 
+                      Empirical Evaluation</b></font></div>
+                  </td>
+                </tr>
+                <tr bgcolor="#F8E0EC"> 
+                  <td width="710" height="45"> 
+                    <ul>
+                      <li> In this type of projects, student will pick a problem 
+                        that interests him/her.</li>
+                      <li>Student is supposed to search the literature for approaches 
+                        to tackle this problem, identifies strong and weak points 
+                        of each approach and selects the most appropriate appraoch.</li>
+                      <li>He/she must implement and experiment with the selected 
+                        technique to quantitatively evaluate its performance in 
+                        tackling the problem.</li>
+                    </ul>
+                  </td>
+                </tr>
+                <tr style="background-color:#999999"> 
+                  <td width="710" height="20"> 
+                    <div align="left"><font face="Verdana" size="2"><b>Type C: 
+                      Algorithm Design</b></font></div>
+                  </td>
+                </tr>
+                <tr bgcolor="#F8E0F1"> 
+                  <td width="710" height="55" bgcolor="#CCCCCC"> 
+                    <ul>
+                      <li>Student identifies a problem for which there are no 
+                        satisfying approaches.</li>
+                      <li>Develop a new technique to tackle this problem.</li>
+                      <li>Analyze theoretically and/or empirically the performance 
+                        of his/her technique. </li>
+                    </ul>
+                  </td>
+                </tr>
+              </table>
+              <div class="pageTitle"></div>
+              <div class="content"> <br><b>Project Activities:</b> <br> <br>
+                <table border="0" celpadding="0" cellspacing="0" width="100%" class="content">
+                  <tr style="background-color:#999999"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><font face="Verdana" size="2"><b>ID</b></font></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><font face="Verdana" size="2"><b>Task 
+                        Description</b></font></div>
+                    </td>
+                  </tr>
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b><font face="Verdana" size="2">1</font></b></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><b>Activity 1: Problem Characterization<br>
+                        </b>This project will start by studying comprehensively 
+                        the problem in order to characterize its complexity and 
+                        its main challenges. A Statement of work (SOW) report 
+                        will be produced for the problem characterization .</div>
+                    </td>
+                  </tr>
+                  <tr > 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b>2</b></div>
+                    </td>
+                    <td colspan="2" width="855"><b>Activity 2: Literature Survey</b><br>
+                      An exhaustive literature review will be performed on the 
+                      modern approaches, which are currently being used or investigated 
+                      to solve this problem. This literature review will address 
+                      all the aspects of the academically or commercially available 
+                      approaches. This literature review will provide taxonomy 
+                      of the different problems and an analysis and comparison 
+                      of the most interesting solutions. A report that summarizes 
+                      the literature review will be produced. This report will 
+                      also provide answers on the following questions:<br>
+                      - How do the different approaches differ? <br>
+                      - What are the strong and weak points of each approach?<br>
+                      - How can you decide which is appropriate for your application? 
+                    </td>
+                  </tr>
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b>3</b></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><b>Activity 3: Comprehensive Study of 
+                        the Candidate Approach</b><br>
+                        Perform a comprehensive study to fully understand the 
+                        candidate approach. </div>
+                    </td>
+                  </tr>
+                  <tr > 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b>4</b></div>
+                    </td>
+                    <td colspan="2" width="855"><b>Activity 4: Proposed Solution 
+                      Design</b><br>
+                      Based on the problem considered and the literature survey, 
+                      propose your own approach to solve the problem. Interim 
+                      report will be produced describing in details the proposed 
+                      approach and explaining how this approach extends or differs 
+                      from other approached reported in the literature. </td>
+                  </tr>
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b><font face="Verdana" size="2">5</font></b></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><b>Activity 5: Metrics selection/definition<br>
+                        </b>Select and define a set of measures of performance, 
+                        which can be used to evaluate the proposed approach.</div>
+                    </td>
+                  </tr>
+                  <tr > 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b>6</b></div>
+                    </td>
+                    <td colspan="2" width="855"><b>Activity 6: Implementation</b><br>
+                      Implement the proposed solution to test and evaluate its 
+                      performance. </td>
+                  </tr>
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b><font face="Verdana" size="2">7</font></b></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><b>Activity 7: Performance Evaluation 
+                        and Refinement<br>
+                        </b>Run some experiments to quantitatively and/or qualitatively 
+                        assess the performance of the proposed approach. You must 
+                        assess the quality of work as well as its fit with project 
+                        objectives and refine the system if needed. A report on 
+                        the implementation, test, and performance evaluation of 
+                        the proposed approach will be produced. </div>
+                    </td>
+                  </tr>
+                  <tr > 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b>8</b></div>
+                    </td>
+                    <td colspan="2" width="855"><b>Activity 8: Final Report</b><br>
+                      Prepare and submit the final report. The final report must 
+                      contain the following sections:<br>
+                      <b>1. Summary:</b> The Summary should be a brief version 
+                      of the full report. It should give the reader an accurate 
+                      overview. Be brief, but be specific. <br>
+                      <b>2. Introduction:</b> summarize the importance of the 
+                      problem you are trying to solve and the reason that motivated 
+                      you to select this project. Explain what was the problem 
+                      or challenge that you were given? state the purpose of the 
+                      project and how did you solve it? Enumerate the objectives 
+                      of the project and describe in brief the structure of the 
+                      report. <br>
+                      <b>3. Literature Review:</b> Conduct a critical survey on 
+                      similar systems/algorithms and explain how your system/algorithm 
+                      extends or differs from these systems/algorithms. <br>
+                      <b>4. Proposed Systems: </b>Explain in details all the components 
+                      of the developed system/algorithm.<br>
+                      <b>5. Performance Evaluation: </b>Establish a set of evaluation 
+                      metrics and run some experiments to quantitatively and/or 
+                      qualitatively assess the performance of the developed system. 
+                      Students must assess the quality of work as well as its 
+                      fit with project objectives.<br>
+                      <b>6. Conclusions & Recommendations:</b> summarize the conclusion 
+                      and future improvement. Explain how did you solve the problem, 
+                      what problems were met? what did the results show? And how 
+                      to refine the proposed solution?You may organize ideas using 
+                      lists or numbered points, if appropriate, but avoid making 
+                      your report into a check-list or a series of encrypted notes 
+                      <br>
+                      <b>7. References:</b> Every report needs references; in 
+                      fact, your failure to consult references for guidance may 
+                      be considered negligence. On the other hand, when you include 
+                      sentences, photos, drawings or figures from other sources 
+                      in your report, the complete reference must be cited. Failure 
+                      to do so is plagiarism, an academic infraction with serious 
+                      consequences.</td>
+                  </tr>
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b><font face="Verdana" size="2">9</font></b></div>
+                    </td>
+                    <td colspan="2" width="855"> 
+                      <div align="left"><b>Activity 9: Presentation Final Delivery<br>
+                        </b>Before the presentation and in order to complete evaluating 
+                        the project, you have to prepare a CD for the supervisor 
+                        containing all materials related to your thesis. The contents 
+                        of this CD must be organized in the following folders: 
+                        <br>
+                        - Documents: a folder that includes the thesis report 
+                        with JabRef eRecords of the research resources, and sources 
+                        of the used diagrams (Visio, PPT, Enterprise, etc.) and 
+                        the presentation (PDF or PPT with all Latex source and 
+                        videos/demos if any). <br>
+                        - Source Code: a folder contains a well documented source 
+                        code and executable code with UserGuide that shows how 
+                        to install and use the developed software. <br>
+                        - SW Used: a folder includes all the software packages 
+                        used during the thesis development. <br>
+                        - Papers: All the published/submitted papers (if any, 
+                        both PDF and Word/Latex with all images/diagrams and slides 
+                        used) organized in folders named by the title of the conference/journal. 
+                        <br>
+                        - Reading: All the reading materials used during the thesis 
+                        development. </div>
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td width="39" valign="top"> 
+                      <div align="center"><b></b></div>
+                    </td>
+                    <td colspan="2" width="855">&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+              <p><br>
+                &nbsp;<b>Project Presentations:</b><br>
+                <br>
+                The project team presents the developed project in 10 minutes 
+                plus 5 minutes for a question period. The classmates view the 
+                presentation, review the presented material, and ask questions. 
+                Each presentation is attended by the course instructor as chair, 
+                course TA, critiquers (classmates), and the project team. All 
+                project proposals must be submitted to the course instructor before 
+                the proposal presentation. The teams do not need to submit their 
+                presentation material for marking. However, students are encouraged 
+                to submit their electronic presentation materials for archival. 
+                During the presentation, one or two members can do all of the 
+                speaking, or three or four members can share the speaking equally. 
+                All team members must be on the stage. Absent members need to 
+                provide documentation excusing their participation, e.g., a doctor's 
+                note. The course instructors will provide the critiquers with 
+                hardcopies of the evaluation sheet. The critiquers mark these 
+                sheets up and hand the completed sheets to the presenting team 
+                at the end of the presentation. The critiquers should provide 
+                clear, relevant and professional comments. The critquers comments 
+                do not need to agree with the instructors' comments, but must 
+                be well justified. Marks are assigned solely by the course instructors 
+                based on the presentation. The instructors use the same evaluation 
+                sheet as the other reviewers. The classmates' critique questions 
+                and results do not affect the presentation marks directly, but 
+                may help the instructors to clarify their own rationale, especially 
+                in evaluating the team's responses to questions. </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#000000"> 
+      <div class="footer">&#169; Dr. Alaa Khamis - 2013</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

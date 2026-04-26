@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>BSE225: Computer Engineering</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Optimization Techniques in Mechatronic Systems, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Robots, Sensors, Surveillance, Cooperation, Interaction, Engineering, SANET, GUC, Waterloo, UC3M, Suez, Alexandria, Germany" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2009 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="1023" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="609">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="102" colspan="2"><img border="0" src="images/banner.png" width="1036" height="130"></td>
+  </tr>
+  <tr> 
+    <td width="127" height="498" valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="127" height="284">
+        <!-- fwtable fwsrc="menu.png" fwbase="menu.gif" fwstyle="Dreamweaver" fwdocid = "3376386" fwnested="0" -->
+        <tr> 
+          <td height="3" width="127"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="127"><a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="127"><a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498" width="905"> 
+      <table width="905" border="0" cellpadding="0" cellspacing="0" height="495">
+        <!--DWLayoutTable-->
+        <tr> 
+          <td width="811" height="549" valign="top"> 
+            
+             
+                <div class="pageTitle"><br>Announcements</div>
+                <div class="content"> <br>
+                  
+              <table border="0" celpadding="0" cellspacing="0" width="97%" class="content" height="45">
+            
+		<tr style="background-color:#999999"> 
+                  <td width="38" height="17"> 
+                    <div align="center"><font face="Verdana" size="2"><b>ID</b></font></div>
+                  </td>
+                  <td width="133" height="17"><font face="Verdana" size="2"><b>Date</b></font></td>
+                  <td width="701" height="17"> 
+                    <div align="left"><font face="Verdana" size="2"><b>Announcement</b></font></div>
+                  </td>
+                </tr>
+
+
+								
+				<!-- News block Start -->
+                <tr>
+				<td width="38" height="18"> <div align="center"><font face="Verdana" size="2">10</font></div></td>
+				<td width="133" height="18">May 16, 2017</td> 
+				<td width="701" height="18"><div align="left"><b>Final Exam</b>
+			    <br>• Final exam will take place on this <b>Thursday May 25, 2017 from 10:00am to 1:00pm</b>.
+				<br>• Final exam will be a comprehensive exam.
+				<br>• The exam will include six questions: 1 Question 1- Number Systems and Binary Arithmetic [9 Marks], Question 2- Binary Logic [12 Marks], Question 3- Algorithms [4 Marks], Question 4- Matlab Review [10 Marks], Question-5: Code Debugging [12 Marks] and Question-6: Code Output [13 Marks]. Code debugging means finding mistakes in a given code and code output means writing the expected output of a given code.
+				<br>• Theoretical parts will be covered through MCQ, complete, True/False questions, give examples, etc.
+				<br>• Lecture-1 Introduction to Computer Engineering [NOT INCLUDED]
+				<br>• Lecture-10: Numerical Analysis and Optimization [NOT INCLUDED]
+				<br>• No formula sheets will be included in the exam booklet.
+				<br>• Study carefully all the course materials very carefully including lectures and assignments.
+				<br><b>Good luck!</b>				
+				</div></td>
+                </tr>
+				<!-- News block End -->	
+				
+
+
+				
+				<!-- News block Start -->
+                <tr bgcolor="#EDFEDF"> 
+                  <td width="38" height="18"> <div align="center"><font face="Verdana" size="2">9</font></div></td>
+                  <td width="133" height="18">April 11, 2017</td>
+                  <td width="701" height="18"> <div align="left">Assignmnet-4 is now posted. Deadline is April 30, 2017.</div></td>
+                </tr>
+				<!-- News block End -->			
+				
+
+				
+				<!-- News block Start -->
+                <tr>
+				<td width="38" height="18"> <div align="center"><font face="Verdana" size="2">8</font></div></td>
+				<td width="133" height="18">Mar 22, 2017</td> 
+				<td width="701" height="18"><div align="left">Updated version of Assignmnet-3 has been posted. Deadline is March 27, 2017.</div></td>
+                </tr>
+				<!-- News block End -->	
+				
+				
+				
+				<!-- News block Start -->
+                <tr bgcolor="#EDFEDF"> 
+                  <td width="38" height="18"> <div align="center"><font face="Verdana" size="2">7</font></div></td>
+                  <td width="133" height="18">Mar. 13, 2017</td>
+                  <td width="701" height="18"> <div align="left">Deadline of Assignmnet-2 has been exteneded to Monday March 20, 2017.</div></td>
+                </tr>
+				<!-- News block End -->			
+				
+				
+				<!-- News block Start -->
+                <tr>
+				<td width="38" height="18"> <div align="center"><font face="Verdana" size="2">6</font></div></td>
+				<td width="133" height="18">Mar 13, 2017</td> 
+				<td width="701" height="18"><div align="left">Assignmnet-3 is now posted. Deadline is March 27, 2017.</div></td>
+                </tr>
+				<!-- News block End -->				
+				
+				
+				
+				<!-- News block Start -->
+                <tr bgcolor="#EDFEDF"> 
+                  <td width="38" height="18"> <div align="center"><font face="Verdana" size="2">5</font></div></td>
+                  <td width="133" height="18">Mar. 7, 2017</td>
+                  <td width="701" height="18"> <div align="left">Assignmnet-2 is now posted. Deadline is Sunday March 19, 2017.</div></td>
+                </tr>
+				<!-- News block End -->				
+
+
+				<!-- News block Start -->
+                <tr>
+				<td width="38" height="18"> <div align="center"><font face="Verdana" size="2">4</font></div></td>
+				<td width="133" height="18">Mar 4, 2017</td> 
+				<td width="701" height="18"><div align="left">Assignmnet-1 is now posted. Deadline is March 12, 2017.</div></td>
+                </tr>
+				<!-- News block End -->
+
+
+				
+				<!-- News block Start -->
+                <tr bgcolor="#EDFEDF"> 
+                  <td width="38" height="18"> <div align="center"><font face="Verdana" size="2">3</font></div></td>
+                  <td width="133" height="18">Feb. 13, 2017</td>
+                  <td width="701" height="18"> <div align="left">Lecture 0 is now posted.</div></td>
+                </tr>
+				<!-- News block End -->
+				
+				 <!-- News block Start -->
+                <tr>
+				<td width="38" height="18"> <div align="center"><font face="Verdana" size="2">2</font></div></td>
+				<td width="133" height="18">Feb. 13, 2017</td> 
+				<td width="701" height="18"><div align="left">ALL course material will be posted on this website.</div></td>
+                </tr>
+				<!-- News block End -->
+				
+				<!-- News block Start -->
+                <tr bgcolor="#EDFEDF"> 
+                  <td width="38" height="18"> <div align="center"><font face="Verdana" size="2">1</font></div></td>
+                  <td width="133" height="18">Feb. 13, 2017</td>
+                  <td width="701" height="18"> <div align="left">Welcome to an exciting new semester!</div></td>
+                </tr>
+				<!-- News block End -->
+				
+				
+              </table>
+                </div>
+       
+                </td>
+        </tr>
+      </table>
+      <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#000000"> 
+ <div class="footer">&#169; Dr. Alaa Khamis 2016-2017</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

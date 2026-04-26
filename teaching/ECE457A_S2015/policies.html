@@ -1,0 +1,291 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>ECE457A: Cooperative and Adaptive Algorithms</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Metaheuristic Optimization and Their Applications in Robotics and Automation, Dr. Alaa Khamis" />
+<meta name="keywords" content="Alaa, Khamis, Optimization, Cooperative and Adaptive Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Trajectory-based Metaheuristic Optimization Algorithms, Graph-search Algorithm, Tabu Search, Simulated Annealing,Evolutionary Computation, Genetic Algorithms, Swarm Intelligence, Ant Colony Optimization, Particle Swarm Optimization, University of Waterloo, ECE 457A" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2014 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7" onload="MM_preloadImages('images/menu_r1_c1_f2.gif','images/menu_r1_c1_f4.gif','images/menu_r1_c1_f3.gif','images/menu_r2_c1_f2.gif','images/menu_r2_c1_f4.gif','images/menu_r2_c1_f3.gif','images/menu_r4_c1_f2.gif','images/menu_r4_c1_f4.gif','images/menu_r4_c1_f3.gif','images/menu_r6_c1_f2.gif','images/menu_r6_c1_f4.gif','images/menu_r6_c1_f3.gif','images/menu_r8_c1_f2.gif','images/menu_r8_c1_f4.gif','images/menu_r8_c1_f3.gif','images/menu_r10_c1_f2.gif','images/menu_r10_c1_f4.gif','images/menu_r10_c1_f3.gif')">
+
+<table width="600" border="0" cellpadding="0" cellspacing="0" bgcolor="#DFE1C6" height="500">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+    <tr> 
+    <td height="71" colspan="6"><img border="0" src="images/banner.png"  height="95" alt="Optimization"></td>
+  </tr>
+  
+   <tr bgcolor="#000000"> 
+    <td class="content" width="100"><a href="index.html"><font color="#FFFFFF">Home</font></a></td>
+    <td class="content" width="100"><a href="schedule.html"><font color="#FFFFFF">Schedule</font></a></td>
+    <td class="content" width="100"><a href="projects.html"><font color="#FFFFFF">Projects</font></a></td>
+	<td class="content" width="150"><a href="policies.html"><font color="#FFFFFF">Evaluation and Policy</font></a></td>
+    <td class="content" width="100"><a href="resources.html"><font color="#FFFFFF">Resources</font></a><a href="index.html"></a></td>
+    <td class="content" width="100"><a href="announcements.html"><font color="#FFFFFF">Announcements</font></a><a href="index.html"></a></td>
+        </tr>
+		
+		<tr bgcolor="#FFFFFF"> 
+    <td height="1114" class="content" colspan="6"> 
+      <div class="pageTitle">Course Policies</div>
+      <div class="content"> <br>
+        <p><b>Grading Policy:</b></p>
+        <table border="1" celpadding="0" cellspacing="0" width="49%" class="content">
+          <tr> 
+            <td colspan="3" height="22" bgcolor="#000000"><font color="#FFFFFF">Evaluation 
+              Method</font></td>
+            <td width="87" height="22" bgcolor="#000000"> 
+              <div align="center"><font color="#FFFFFF">Weight</font></div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" bgcolor="#00FFCC"> Assignments</td>
+            <td width="87" bgcolor="#00FFCC"> 
+              <div align="center">20%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" >Project </td>
+            <td width="87" > 
+              <div align="center">30%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" > 
+              <div align="right">General quality of the report and the code</div>
+            </td>
+            <td width="87" > 
+              <div align="center">10%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" > 
+              <div align="right">Originality/level of innovativeness and significance 
+                of theory and/or practice</div>
+            </td>
+            <td width="87" > 
+              <div align="center">5%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" > 
+              <div align="right">Experimental results and quantitative and qualitative 
+                analysis</div>
+            </td>
+            <td width="87" > 
+              <div align="center">10%</div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3" height="12" >
+              <div align="right">Implementation of adaptive and/or cooperative 
+                version of the algorithms</div>
+            </td>
+            <td width="87" height="12" >
+              <div align="center">5%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" height="12" > 
+              <div align="right">Bonus for self-study algorithm implementation</div>
+            </td>
+            <td width="87" height="12" > 
+              <div align="center">5%</div>
+            </td>
+          </tr>
+          <tr> 
+            <td colspan="3" bgcolor="#00FFCC" >Final Exam</td>
+            <td width="87" bgcolor="#00FFCC" > 
+              <div align="center">50%</div>
+            </td>
+          </tr>
+          <tr > 
+            <td colspan="3" height="17" bgcolor="#CC6633">Total</td>
+            <td width="87" height="17" bgcolor="#CC6633"> 
+              <div align="center">100%</div>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <br>
+        <b>General Rules:</b> </div>
+      <ul>
+        <li> 
+          <div class="content"> Anything submitted/handed in after the due date 
+            will be penalized by 50% for each 24 hours of lateness.<br>
+          </div>
+        </li>
+        <li> 
+          <div class="content"> All assignemnts are to be done individually. If 
+            you have any homework problems, you are urged to bring your questions 
+            to the professor or the TA. Your assignment will not be graded if 
+            answers are provided without explanations, if student's name is missing 
+            or if some pages are missing.<br>
+          </div>
+        </li>
+                <li> 
+          <div class="content">The work submitted for grading must be your own 
+            work. It is reasonable to discuss with others possible general approaches 
+            to problems. It is unreasonable to work together on a detailed solution, 
+            to copy a solution, or to give away a solution. Such instances of 
+            academic dishonesty may result in a course grade of F. Submitting 
+            a work that is not your own work is considered academic dishonesty 
+            (Plagiarism). <b>NO COPYING OF PROGRAMMING ASSIGNMENTS WILL BE TOLERATED!</b> 
+            Cheating will be dealt with harshly, and may result in failure of 
+            the assignment/exam and/or failure of the class. Each student is responsible 
+            for securing his or her work from copying. <br>
+          </div>
+        </li>
+		<li> 
+          <div class="content"> The<b> final exam</b> will be comprehensive closed-book 
+            exam covering material from the entire course.<br>
+          </div>
+        </li>
+        <li> 
+          <div class="content"> Although class attendance will not be taken, decisions 
+            on borderline grades will be based upon exceptional class participation, 
+            as deemed merited by the course instructor. You are expected to keep 
+            up with all course material and announcements covered in class. If 
+            you miss class, you must obtain the covered material from a willing 
+            classmate. Neither the instructor nor the TAs will be available (during 
+            office hours or other times) to repeat material covered in class.<br>
+          </div>
+        </li>
+        <li> 
+          <div class="content">Please use the course website on LEARN as your 
+            first resource for course materials. Updates will be made daily as 
+            appropriate. It is essential that you check the website periodically. 
+            Posted will be homework assignments, course announcements, changes 
+            in course materials, handouts, code/examples, and answers to pertinent 
+            questions.</div>
+        </li>
+      </ul>
+      <p><b>Academic Integrity</b></p>
+      <p>In order to maintain a culture of academic integrity, members of the 
+        University of Waterloo community are expected to promote honesty, trust, 
+        fairness, respect and responsibility. [Check <a href="www.uwaterloo.ca/academicintegrity/">www.uwaterloo.ca/academicintegrity/</a> 
+        for more information.]</p>
+      <p><b>Grievance</b></p>
+      <p>A student who believes that a decision affecting some aspect of his/her 
+        university life has been unfair or unreasonable may have grounds for initiating 
+        a grievance. Read Policy 70, Student Petitions and Grievances, Section 
+        4, <a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy70.htm">http://www.adm.uwaterloo.ca/infosec/Policies/policy70.htm</a>. 
+        When in doubt please be certain to contact the department's administrative 
+        assistant who will provide further assistance.</p>
+      <p><b>Discipline</b></p>
+      <p>A student is expected to know what constitutes academic integrity to 
+        avoid committing academic offenses and to take responsibility for his/her 
+        actions. A student who is unsure whether an action constitutes an offense, 
+        or who needs help in learning how to avoid offenses (e.g., plagiarism, 
+        cheating) or about &quot;rules&quot; for group work/collaboration should 
+        seek guidance from the course professor, academic advisor, or the undergraduate 
+        associate dean. For information on categories of offenses and types of 
+        penalties, students should refer to Policy 71, Student Discipline,<a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy71.htm"> 
+        http://www.adm.uwaterloo.ca/infosec/Policies/policy71.htm</a>. For typical 
+        penalties check Guidelines for the Assessment of Penalties, <a href="http://www.adm.uwaterloo.ca/infosec/guidelines/penaltyguidelines.htm">http://www.adm.uwaterloo.ca/infosec/guidelines/penaltyguidelines.htm</a>.</p>
+      <p>Plagiarism-detection software may be used on any submitted work.</p>
+      <p><b>Appeals</b></p>
+      <p>A decision made or penalty imposed under Policy 70, Student Petitions 
+        and Grievances (other than a petition) or Policy 71, Student Discipline 
+        may be appealed if there is a ground. A student who believes he/she has 
+        a ground for an appeal should refer to Policy 72, Student Appeals, <a href="http://www.adm.uwaterloo.ca/infosec/Policies/policy72.htm">http://www.adm.uwaterloo.ca/infosec/Policies/policy72.htm</a>.</p>
+      <p><b>Note for students with disabilities</b></p>
+      <p>The Office for Persons with Disabilities (OPD), located in Needles Hall, 
+        Room 1132, collaborates with all academic departments to arrange appropriate 
+        accommodations for students with disabilities without compromising the 
+        academic integrity of the curriculum. If you require academic accommodations 
+        to lessen the impact of your disability, please register with the OPD 
+        at the beginning of each academic term.</p>
+      
+          
+            </td>
+        </tr>
+		
+  
+	
+      <!-- InstanceEndEditable -->
+  
+  <tr> 
+    <td height="28" colspan="6" bgcolor="#000000"> 
+      <div class="footer"><font color="yellow">&#169; Dr. Alaa Khamis 2015</font></div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

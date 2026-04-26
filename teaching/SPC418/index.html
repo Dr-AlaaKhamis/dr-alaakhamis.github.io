@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>SPC418: Autonomous Vehicles Design and Control</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Autonomous Vehicles Design and Control, Dr. Alaa Khamis." />
+<meta name="keywords" content="Alaa, Khamis, Robots, Autonomous, Vehicles, Design, Control" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 2011 Dr. Alaa Khamis" />
+<meta property="og:title" content="Autonomous Vehicles Design and Control"/>
+<meta property="og:image" content="images/0.jpg"/>
+
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7"">
+
+<table width="934" border="0" cellpadding="0" cellspacing="0" bgcolor="#858585" height="609">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="71" colspan="2"><img border="0" src="images/banner.png" ></td>
+  </tr>
+  <tr> 
+    <td width="119" height="498" valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="113" height="284">
+        <tr> 
+          <td height="3" width="53"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="53">&nbsp;<a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="projects.html">Projects</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+	  
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498"> 
+      <table width="785" border="0" cellpadding="0" cellspacing="0" height="495">
+        <!--DWLayoutTable-->
+        <tr> 
+          <td width="785" height="495" valign="top"> 
+            <div class="pageTitle"><br>SPC418: Autonomous Vehicles Design and Control</div>
+            <div class="content"> 
+              <p align="justify">In recent years, autonomous vehicles have received an increasing amount of attention from academia, government laboratories and industry due to their wide applicability in many potential domains such as autonomous driving, space exploration, network-centric warfare, intelligence, surveillance and reconnaissance (ISR), humanitarian demining, post-disaster search and rescue missions and environment monitoring to name just a few. 
+Autonomous vehicles are intelligent systems that can function and interact autonomously within unstructured, dynamic and sometimes partially observable environments without explicit human guidance. These vehicles employ intelligent techniques to mimic human intelligence in decision making, problem solving, learning from the environment and adapting to its changes. An autonomous vehicle should be able to answer questions like “Where am I?”, “Where am I going?”, “What does the world look like?”, “How to explore an unknown environment?”, “How can I get there from here?”, “How to achieve intelligent connection between perception and action?” and “how to update with unexpected events?”.
+This course aims at providing students with the basics required to design and control an autonomous vehicle and explains the intelligent algorithms that make this vehicle able to answer the aforementioned questions autonomously. It covers different aspects of autonomous vehicles such as locomotion, localization, state estimation, control, environment mapping and motion planning and learning. Without assuming any prior knowledge of artificial intelligence, the course provides an introduction to the key artificial intelligence issues involved in the development of autonomous vehicles.
+ </p>
+					  
+              <p align="justify"><b>Course Instructor: </b><a href="http://www.alaakhamis.org/" target="_blank">Dr. Alaa Khamis</a> 
+              <br>
+                <b>Email: </b>alaakhamis[at]gmail[dot]com <b><br>
+                Office: </b>TBD<br>
+                <b>Office hours:</b> TBD</p>
+            
+			  <p align="justify"><b>Course TAs: </b><br>
+                <b>Eng. Ahmed Khairy</b><br>
+                Email: akhairy[at]zewailcity[dot]edu[dot]eg <br>
+                Office: TBD <br>
+                Office hours: TBD<br>			  
+			  
+                <b>Junior TA: Mahmoud Abdul Galil</b><br>
+                Email: s-mahmoud[dot]abdelgalil[at]zewailcity[dot]edu[dot]eg <br>
+                Office: TBD <br>
+                Office hours: TBD<br>
+              </p>
+			
+			  <p align="justify"><b>Textbook: <br>
+                </b>- R. Siegwart and I. Nourbakhsh . <i>Introduction to Autonomous Mobile Robots</i>. MIT Press, 2004. <br>
+                - Thomas Braunl. <i>Embedded Robotics</i>. Springer, 2006. <br>
+				- Robin Murphy . <i>Introduction to AI Robotics</i>. MIT Press, 
+                2000. <br>
+                - Phillip McKerrow. <i>Introduction to Robotics</i>. Addison-Wesley, 
+                1991. <br>
+                - Mark Lee.<i> Intelligent Robotics</i>. Halsted Press and Open University Press, 1989. <br>
+                 Lectures will be based mainly, but not exclusively, on material in these textbooks. Lectures will not follow the same sequence 
+                as the material presented in the texts. </p>
+            </div>
+          </td>
+        </tr>
+      </table>
+      <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#5f5f5f"> 
+      <div class="footer">&#169; Dr. Alaa Khamis 2016-2017</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-12010168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>

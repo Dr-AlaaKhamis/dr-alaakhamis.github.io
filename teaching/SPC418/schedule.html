@@ -1,0 +1,359 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<!-- saved from url=(0014)about:internet -->
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/template.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<!-- InstanceBeginEditable name="doctitle" -->
+<title>Autonomous Vehicles Design and Control</title>
+<!-- InstanceEndEditable -->
+<meta name="google-site-verification" content="OY0mTH-DtTA1DKj1HWdV9a2cHhToE-Za0cQ2WLQuLcg" />
+<meta name="description" content="Autonomous Vehicles Design and Control, Dr. Alaa Khamis." />
+<meta name="keywords" content="Alaa, Khamis, Robots, Autonomous, Vehicles, Design, Control" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="Dr. Alaa Khamis" />
+<meta name="Copyright" content="Copyright (c) 3271 Dr. Alaa Khamis" />
+
+<style type="text/css">td img {display: block;}body {
+	background-image: url(images/BG.gif);
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+</style>
+<!--Fireworks 8 Dreamweaver 8 target.  Created Thu Feb 23 15:39:38 GMT-0500 (Eastern Standard Time) 2006-->
+<link href="style.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+function MM_nbGroup(event, grpName) { //v6.0
+var i,img,nbArr,args=MM_nbGroup.arguments;
+  if (event == "init" && args.length > 2) {
+    if ((img = MM_findObj(args[2])) != null && !img.MM_init) {
+      img.MM_init = true; img.MM_up = args[3]; img.MM_dn = img.src;
+      if ((nbArr = document[grpName]) == null) nbArr = document[grpName] = new Array();
+      nbArr[nbArr.length] = img;
+      for (i=4; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+        if (!img.MM_up) img.MM_up = img.src;
+        img.src = img.MM_dn = args[i+1];
+        nbArr[nbArr.length] = img;
+    } }
+  } else if (event == "over") {
+    document.MM_nbOver = nbArr = new Array();
+    for (i=1; i < args.length-1; i+=3) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = (img.MM_dn && args[i+2]) ? args[i+2] : ((args[i+1])?args[i+1] : img.MM_up);
+      nbArr[nbArr.length] = img;
+    }
+  } else if (event == "out" ) {
+    for (i=0; i < document.MM_nbOver.length; i++) { img = document.MM_nbOver[i]; img.src = (img.MM_dn) ? img.MM_dn : img.MM_up; }
+  } else if (event == "down") {
+    nbArr = document[grpName];
+    if (nbArr) for (i=0; i < nbArr.length; i++) { img=nbArr[i]; img.src = img.MM_up; img.MM_dn = 0; }
+    document[grpName] = nbArr = new Array();
+    for (i=2; i < args.length-1; i+=2) if ((img = MM_findObj(args[i])) != null) {
+      if (!img.MM_up) img.MM_up = img.src;
+      img.src = img.MM_dn = (args[i+1])? args[i+1] : img.MM_up;
+      nbArr[nbArr.length] = img;
+  } }
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+//-->
+</script>
+<!-- InstanceBeginEditable name="head" --><!-- InstanceEndEditable -->
+</head>
+<body bgcolor="#f7f7f7"">
+
+<table width="934" border="0" cellpadding="0" cellspacing="0" bgcolor="#858585" height="609">
+  <!--DWLayoutTable-->
+  <!-- fwtable fwsrc="main2.png" fwbase="main1.gif" fwstyle="Dreamweaver" fwdocid = "272569388" fwnested="0" -->
+  <tr> 
+    <td height="3" colspan="2"><img src="images/spacer.gif" width="153" height="1" border="0" alt="" /></td>
+  </tr>
+  <tr> 
+    <td height="71" colspan="2"><img border="0" src="images/banner.png" ></td>
+  </tr>
+  <tr> 
+    <td width="119" height="498" valign="top"> 
+      <table border="0" cellpadding="0" cellspacing="0" width="113" height="284">
+        <tr> 
+          <td height="3" width="53"><img src="images/spacer.gif" width="90" height="1" border="0" alt="" /></td>
+        </tr>
+        <tr> 
+          <td height="30" class="content" width="53">&nbsp;<a href="index.html">Home</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="schedule.html">Schedule</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="projects.html">Projects</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="policies.html">Policies</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="resources.html">Resources</a></td>
+        </tr>
+        <tr> 
+          <td height="32" class="content" width="53">&nbsp;<a href="announcements.html">Announcements</a></td>
+        </tr>
+      </table>
+    </td>
+    <td valign="top" bgcolor="#FFFFFF" height="498"> 
+      <table width="785" border="0" cellpadding="0" cellspacing="0" height="495">
+        <!--DWLayoutTable-->
+        <tr> 
+		    <td width="785" height="495" valign="top"> 
+            <div class="pageTitle"><br>Schedule</div>
+            <div class="content"> 
+			
+
+              <div class="content"> 
+                <table border="1" celpadding="0" cellspacing="0" width="100%" class="content">
+                  <tr style="background-color:#999999"> 
+                    <td width="57"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Week</b></font></div>
+                    </td>
+                    <td width="158"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Date</b></font></div>
+                    </td>
+                    <td width="327"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Lectures</b></font></div>
+                    </td>
+                     <td width="327"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Tutorials</b></font></div>
+                    </td>
+                   <td width="327"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Assignments</b></font></div>
+                    </td>
+                   <td width="327"> 
+                      <div align="center"><font face="Verdana" size="2"><b>Reading Material</b></font></div>
+                    </td> 
+					</tr>
+				  
+			
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">1</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">18-22 Sept.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L0-Course Presentation.pdf" target="_blank">Course Presentation</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-1.pdf" target="_blank">Introduction to Linux and C++</a></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">2</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">25-29 Sept.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L1-Introduction.pdf" target="_blank">Introduction to Autonomous Vehicles</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-2.pdf" target="_blank">Introduction to ROS</a></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center"><a href="http://www.ras-egypt.org/reading/Robots_Moving_Closer_to_Humans.pptx" target="_blank">Robots Moving Closer to Humans</a>, <a href="reading/Reading-1-Robot Stat.pdf" target="_blank">Reading-1-Robot Stat</a>,
+					<a href="reading/Reading-2-Robotics Research.pdf" target="_blank">Reading-2-Robotics Research</a>,<a href="reading/Reading-3-UAVs.pdf" target="_blank">Reading-3-UAVs</a>,<a href="reading/Reading-4-UUVs.pdf" target="_blank">Reading-4-UUVs</a></td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">3</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">2-6 Oct.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L2-Locomotion Systems.pdf" target="_blank">Locomotion Systems</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-3.pdf" target="_blank">Setting CATBot simulation environment</a></td>
+                    <td width="327" height="19" align="center"><a href="assignments/Assignment-1.pdf" target="_blank">Assignment-1</a>, <a href="assignments/Assignment-1-Soln.pdf" target="_blank">Model Answer</a></td>
+					<td width="327" height="19" align="center"><a href="reading/Systematic Configuration of Robotic Locomotion.pdf" target="_blank">Systematic Configuration of Robotic Locomotion</a>,
+					<a href="reading/Wheeled all-terrain robot locomotion.pdf" target="_blank">Wheeled all-terrain robot locomotion</a>,
+					<a href="reading/Robots for Space.pdf" target="_blank">Robots for Space</a>,
+					<a href="reading/Motor Sizing Calculations.pdf" target="_blank">Motor Sizing Calculations</a>					
+					
+					</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">4</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">9-13 Oct.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L3-Sensing and Perception.pdf" target="_blank">Sensing and Perception</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-4.pdf" target="_blank">CATBot Kinematic model in ROS</a></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">
+					<a href="reading/Sensors.pdf" target="_blank">Sensors</a>,
+					<a href="reading/Visual_Servoing.pdf" target="_blank">Visual Servoing</a>,
+					<a href="https://www.researchgate.net/publication/275342356_Sensor_Interoperability_and_Accessibility.pdf" target="_blank">Sensor Interoperability and Accessibility</a>,
+					<a href="http://www.ras-egypt.org/reading/IEEE%20RAS%20Egypt%20Schilling%20Handout.pdf" target="_blank">Pico-Satellites for Education and Research in Networked Space Systems</a>				
+					</td>
+                  </tr>
+				  <!-- End week block -->
+				  
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">5</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">16-20 Oct.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L4-Localization.pdf" target="_blank">Localization</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-5.pdf" target="_blank">Adding Sensors to CATBot</a></td>
+                    <td width="327" height="19" align="center">Assignment-1 due & <a href="assignments/Assignment-2.pdf" target="_blank">Assignment-2</a></td>
+					<td width="327" height="19" align="center">
+					<a href="reading/Visual odometry.pdf" target="_blank">Visual Odometry</a>,
+					<a href="http://e-collection.library.ethz.ch/eserv/eth:5659/eth-5659-01.pdf " target="_blank">Indoor Localization</a>
+					</td>
+                  </tr>
+				  <!-- End week block -->
+				  
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">6</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">23-27 Oct.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L5-State Estimation-I.pdf" target="_blank">State Estimation-I</a></font></div></td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-6.pdf" target="_blank">CATBot Localization</a></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center"><a href="reading/Information fusion.pdf" target="_blank">Information fusion</a></td>
+                  </tr>
+				  <!-- End week block -->
+				  
+				  
+				  <!-- Start week block -->
+                  <tr bgcolor="#F5A9A9"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">7</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">30 Oct. - 3 Nov.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2">Midterm Exam</font></div></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+                    <td width="327" height="19" align="center"><a href="tutorials/Tutorial-7.pdf" target="_blank">How to write a paper</a>,<a href="tutorials/Tutorial-8.pdf" target="_blank">Tutorial-8</a></td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+				  
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">8</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">6-10 Nov.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L6-State Estimation-II.pdf" target="_blank">State Estimation-II</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot Bayes Filter</td>
+                    <td width="327" height="19" align="center">Assignment-2 due</td>
+					<td width="327" height="19" align="center"><a href="reading/Kalman filter.pdf" target="_blank">Kalman filter</a>,
+					<a href="reading/Advanced Reading.pdf" target="_blank">Advanced Reading</a></td>
+                  </tr>
+				  <!-- End week block -->
+				  
+
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">9</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">13-17 Nov.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L7-Mapping.pdf" target="_blank">Environment Mapping</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot Kalman Filter</td>
+                    <td width="327" height="19" align="center"><a href="projects.html">Midterm Report</a> due,  <a href="assignments/ProgExam.pdf" target="_blank">Programming Exam</a></td>
+					<td width="327" height="19" align="center"><a href="reading/Elfes_occup_grids.pdf" target="_blank">Elfes algorithm</td>
+                  </tr>
+				  <!-- End week block -->
+
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">10</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">20-24 Nov.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L8-Discrete Motion Planning.pdf" target="_blank">Discrete Motion Planning</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot Mapper</td>
+                    <td width="327" height="19" align="center"><a href="assignments/Assignment-3.pdf" target="_blank">Assignment-3</a></td>
+					<td width="327" height="19" align="center"><a href="slides/L8-SampleCode.7z" target="_blank">Sample code</a></td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">11</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">27 Nov. - 1 Dec.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L9-Combinatorial and Sampling Planning.pdf" target="_blank">Combinatorial Planning and Sampling-based Planning</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot Discrete Planners</td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">12</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">4-8 Dec.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/Lecture-10-Planning under Uncertainty.pdf" target="_blank">Planning under Uncertainty</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot PRM and RRT</td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->	
+				  
+				  <!-- Start week block -->
+                  <tr> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">13</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">11-15 Dec.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2"><a href="slides/L11-Learning.pdf" target="_blank">Learning</a></font></div></td>
+                    <td width="327" height="19" align="center">CATBot MDP</td>
+                    <td width="327" height="19" align="center">Assignment-3 due</td>
+					<td width="327" height="19" align="center"><a href="reading/Machine Learning Yearning.pdf" target="_blank">Machine Learning Yearning</a>
+					<br><a href="slides/ValueIteration.m" target="_blank">ValueIteration code</a></td>
+                  </tr>
+				  <!-- End week block -->		
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F8E0EC"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">14</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">18-22 Dec.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2">Project Presentations</font></div></td>
+                    <td width="327" height="19" align="center">CATBot Reinforcement Learner</td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->		
+
+				  <!-- Start week block -->
+                  <tr bgcolor="#F5A9A9"> 
+                    <td width="57" height="19"><div align="center"><font face="Verdana" size="2">15</font></div></td>
+                    <td width="158" height="19"><div align="center"><font face="Verdana" size="2">25-29 Dec.</font></div></td>
+                    <td width="327" height="19"><div align="center"><font face="Verdana" size="2">Final Exam</font></div></td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+                    <td width="327" height="19" align="center">&nbsp;</td>
+					<td width="327" height="19" align="center">&nbsp;</td>
+                  </tr>
+				  <!-- End week block -->		
+			  
+				  
+                </table>
+              </div>
+             
+            </div>
+          </td>
+        </tr>
+      </table>
+    <!-- InstanceEndEditable -->
+    </td>
+  </tr>
+  <tr> 
+    <td height="28" colspan="2" bgcolor="#5f5f5f"> 
+      <div class="footer">&#169; Dr. Alaa Khamis 2016-2017</div>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-13270168-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</body>
+<!-- InstanceEnd --></html>
