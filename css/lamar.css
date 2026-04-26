@@ -809,4 +809,18 @@ figcaption {
     width:100%;
     position:absolute;
 }
+
+/* Ensure the menu is always displayed for both desktop and mobile */
+.navigation-menu {
+  display: flex;
+  flex-direction: row; /* Adjust to row for horizontal display */
+  width: 100%;
+  background-color: #fff; /* Optional: adjust as needed */
+}
+
+/* Hide the menu button on mobile */
+.menu-button {
+  display: none;
+}
+
 }
