@@ -79,7 +79,7 @@ FOOTER_COLS = [
     ("Explore", [("shortbio.html", "About"), ("research.html", "Research"),
                  ("publications.html", "Publications"), ("books.html", "Books")]),
     ("More", [("teaching.html", "Teaching"), ("services.html", "Service"),
-              ("awards.html", "Awards & Honours"), ("events.html", "News & Events")]),
+              ("awards.html", "Awards & Honors"), ("events.html", "News & Events")]),
 ]
 
 
@@ -113,7 +113,7 @@ def shell(active, title, description, body, head_extra="", body_class=""):
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>
-  // Set the theme before first paint so there is no flash of the wrong colours.
+  // Set the theme before first paint so there is no flash of the wrong colors.
   (function () {{
     try {{
       var t = localStorage.getItem("theme");
@@ -214,6 +214,18 @@ TYPOS = [
     ("http://alaakhamis.org/MineProbe/", "MineProbe/index.html"),
     ("Supervised 9 ZC students toward participation in SpacX",
      "Supervised 9 Zewail City students toward participation in SpaceX"),
+    # house style: American English, no em dashes
+    ("smart mobility triad — technology, governance, and city planning — work together",
+     "smart mobility triad (technology, governance, and city planning) work together"),
+]
+
+# Words to keep as-is even though they look British: they are proper nouns
+# (organisation names, journal titles, official programme names).
+SPELLING_EXCEPTIONS = [
+    "Minesweepers: Towards", "Engine: Towards", "Intelligent Defence Support Systems",
+    "Defence R&D Canada", "Journal of Modelling", "Centre for Pattern Analysis",
+    "International Centre for Humanitarian Demining", "centre-pattern-analysis",
+    "Innovation Programme", "Executive Programme", "DAAD", "Programme\n", "Programme\"",
 ]
 
 
@@ -420,11 +432,52 @@ def build_simple(src_name, out_name, title, subtitle, page_title, description,
     return body
 
 
+BRITISH_RE = re.compile(
+    r"\b\w*(?:ise[sdr]?|ising|isation[s]?|our[s]?|ogue|isence)\b|"
+    r"\bprogramme[s]?\b|\bcentre[s]?\b|\bdefence\b|\bmodelling\b|\btowards\b|"
+    r"\bwhilst\b|\bamongst\b|\bhonours?\b|\bcolours?\b",
+    re.I)
+
+# Ordinary English words that the crude pattern above would flag by accident.
+BRITISH_FALSE_POSITIVES = {
+    "our", "your", "yours", "four", "hour", "hours", "tour", "tours", "pour",
+    "labour-", "wise", "rise", "rises", "raise", "raises", "praise", "noise",
+    "precise", "concise", "expertise", "revise", "revised", "franchise",
+    "promise", "promises", "premise", "premises", "advertise", "surprise",
+    "supervise", "supervised", "supervisor", "comprise", "comprises", "rising",
+    "arising", "raising", "cruising", "advising", "revising", "devise", "devices",
+    "labour",
+}
+
+
+def style_check(name, text):
+    """Fail loudly on em dashes; report British spellings outside proper nouns."""
+    problems = []
+    if "—" in text or "&mdash;" in text:
+        for m in re.finditer(r"—|&mdash;", text):
+            problems.append("em dash: ..." + text[max(0, m.start() - 45):m.end() + 40].replace("\n", " "))
+
+    for m in BRITISH_RE.finditer(text):
+        word = m.group(0)
+        if word.lower() in BRITISH_FALSE_POSITIVES:
+            continue
+        window = text[max(0, m.start() - 45):m.end() + 25]
+        if any(x in window for x in SPELLING_EXCEPTIONS):
+            continue
+        problems.append("spelling: %r in ...%s" % (word, window.replace("\n", " ")))
+
+    for p in problems:
+        print("  ! %s: %s" % (name, p))
+    return problems
+
+
 def write(name, text):
     path = os.path.join(OUT, name)
     with open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write(text)
-    print("wrote", name, "%.1f KB" % (len(text) / 1024.0))
+    flagged = style_check(name, text) if name.endswith(".html") else []
+    print("wrote", name, "%.1f KB%s" % (len(text) / 1024.0,
+                                        "  [%d style flags]" % len(flagged) if flagged else ""))
 
 
 # ---- publications --------------------------------------------------------
@@ -481,7 +534,7 @@ def build_publications():
         + intro + '\n<div id="pub-list">\n' + "\n\n".join(blocks) + "\n</div>\n  </div>\n</div>\n")
 
     write("publications.html", shell(
-        "publications.html", "Publications — Alaa Khamis",
+        "publications.html", "Publications | Alaa Khamis",
         "Books, book chapters, journal and conference papers, standards and patents by Alaa Khamis.",
         html))
 
@@ -509,7 +562,7 @@ def build_events():
                         "Talks, appointments, papers, awards and lab announcements, most recent first.",
                         "<span>Updated August 2026</span>")
             + toolbar + prose(body))
-    write("events.html", shell("events.html", "News &amp; Events — Alaa Khamis",
+    write("events.html", shell("events.html", "News &amp; Events | Alaa Khamis",
                                "Recent news, keynotes, appointments and announcements from Alaa Khamis.", html))
 
 
@@ -526,7 +579,7 @@ def build_teaching():
                         "Spain and Egypt, with class sizes from 8 to 600 students.",
                         "<span>Updated 2025&ndash;2026</span>")
             + prose(body))
-    write("teaching.html", shell("teaching.html", "Teaching — Alaa Khamis",
+    write("teaching.html", shell("teaching.html", "Teaching | Alaa Khamis",
                                  "Courses, keynote speeches, tutorials and seminars by Alaa Khamis.", html))
 
 
@@ -568,7 +621,7 @@ def build_books():
                         "Two published books, an open-source Jupyter book and a Medium publication on "
                         "AI for smart mobility.")
             + prose(body))
-    write("books.html", shell("books.html", "Books — Alaa Khamis",
+    write("books.html", shell("books.html", "Books | Alaa Khamis",
                               "Optimization Algorithms, Smart Mobility, AI Search Algorithms for Smart "
                               "Mobility and the AI4SM Medium publication.", html))
 
@@ -592,9 +645,9 @@ CARD_ICONS = {
 
 HOME_CARDS = [
     ("research", "Research", "research.html",
-     "AI at the intersection of mobility systems, services and business models &mdash; "
-     "seamless integrated mobility, software-defined vehicle observability, contextual causal "
-     "inference, and design, planning and control problems.",
+     "AI at the intersection of mobility systems, services, and business models: seamless "
+     "integrated mobility, software-defined vehicle observability, contextual causal "
+     "inference, and design, planning, and control problems.",
      "Explore research"),
     ("publications", "Publications", "publications.html",
      "Six books, seven book chapters, more than 200 refereed papers and 72 filed US patents, "
@@ -604,7 +657,7 @@ HOME_CARDS = [
      "Forty-four undergraduate and graduate courses across Canada, Saudi Arabia, Spain and Egypt, "
      "with class sizes from 8 to 600 students.",
      "See courses"),
-    ("service", "Service &amp; Honours", "services.html",
+    ("service", "Service &amp; Honors", "services.html",
      "Founding chair of the IEEE ITSS Saudi Arabia Chapter and of IEEE SM; editor, reviewer, and "
      "recipient of the 2018 IEEE MGA Achievement Award.",
      "View service record"),
@@ -633,8 +686,8 @@ HOME_NEWS = [
     'were accepted by <em>IEEE Access</em>, 2025.',
 
     'I won first place in the <a href="https://umrah.sspchallenge.com/en/" target="_blank" rel="noopener noreferrer">'
-    'Sustainable Solutions for Pilgrims Challenge &mdash; Umrah Challenge</a>, part of the Umrah and Ziyarah Forum '
-    'organised by the Ministry of Hajj and Umrah in Al-Madinah, April 2025.',
+    'Sustainable Solutions for Pilgrims Challenge (Umrah Challenge)</a>, part of the Umrah and Ziyarah Forum '
+    'organized by the Ministry of Hajj and Umrah in Al-Madinah, April 2025.',
 ]
 
 
@@ -662,13 +715,13 @@ def build_home():
         <p class="hero__credentials">PhD, SMIEEE &middot; Associate Professor, KFUPM</p>
         <p class="hero__lead">
           My research sits at the intersection of artificial intelligence and mobility systems, services and
-          business models &mdash; from seamless integrated mobility and software-defined vehicle observability
-          to the design, planning and control problems behind people mobility, logistics and transportation
-          infrastructure.
+          business models: from seamless integrated mobility and software-defined vehicle observability
+          to the design, planning, and control problems behind people mobility, logistics, and
+          transportation infrastructure.
         </p>
         <ul class="affiliations">
           <li><strong>Director</strong>, <a href="https://ai4sm.org/" target="_blank" rel="noopener noreferrer">AI for Smart Mobility Lab</a>, KFUPM</li>
-          <li><strong>Chair</strong>, <a href="https://ieee-itss.org/chapters-committees/saudi-chapter/" target="_blank" rel="noopener noreferrer">IEEE Intelligent Transportation Systems Society &mdash; Saudi Chapter</a></li>
+          <li><strong>Chair</strong>, <a href="https://ieee-itss.org/chapters-committees/saudi-chapter/" target="_blank" rel="noopener noreferrer">IEEE Intelligent Transportation Systems Society, Saudi Chapter</a></li>
           <li>Department of Industrial and Systems Engineering &amp; IRC for Smart Mobility and Logistics, College of Computing and Mathematics, King Fahd University of Petroleum and Minerals</li>
           <li>Adjunct Faculty, University of Toronto and Ontario Tech University</li>
           <li>Formerly AI &amp; Smart Mobility Technical Leader, General Motors</li>
@@ -715,7 +768,7 @@ def build_home():
     <div class="section__head">
       <div>
         <h2>Books</h2>
-        <p>Written for practitioners who need to put search, optimisation and mobility technology to work.</p>
+        <p>Written for practitioners who need to put search, optimization, and mobility technology to work.</p>
       </div>
       <a class="link-more" href="books.html">All books and publication hubs</a>
     </div>
@@ -726,7 +779,7 @@ def build_home():
         </a>
         <div>
           <h3>Optimization Algorithms: AI techniques for design, planning, and control problems</h3>
-          <p>Manning Publications, 2024. Deterministic and stochastic derivative-free optimisation, nature-inspired
+          <p>Manning Publications, 2024. Deterministic and stochastic derivative-free optimization, nature-inspired
              search and machine-learning methods, with Python case studies throughout.</p>
           <a class="link-more" href="books.html#optimization-algorithms-ai-techniques-for-design-planning-and-control-problems">About this book</a>
         </div>
@@ -737,8 +790,8 @@ def build_home():
         </a>
         <div>
           <h3>Smart Mobility: Exploring Foundational Technologies and Wider Impacts</h3>
-          <p>Apress (Springer Nature), 2021. A holistic view of how the smart mobility triad &mdash; technology,
-             governance and city planning &mdash; combine to create sustainable mobility.</p>
+          <p>Apress (Springer Nature), 2021. A holistic view of how the smart mobility triad (technology,
+             governance, and city planning) combines to create sustainable mobility.</p>
           <a class="link-more" href="books.html#smart-mobility-exploring-foundational-technologies-and-wider-impacts">About this book</a>
         </div>
       </article>
@@ -776,8 +829,8 @@ def build_home():
       </div>
       <div class="contact__item">
         <h3>Lab</h3>
-        <p><a href="https://ai4sm.org/" target="_blank" rel="noopener noreferrer">AI for Smart Mobility Lab</a>
-           &mdash; open post-doctoral positions</p>
+        <p><a href="https://ai4sm.org/" target="_blank" rel="noopener noreferrer">AI for Smart Mobility Lab</a>.
+           Open postdoctoral positions.</p>
       </div>
     </div>
   </div>
@@ -785,7 +838,7 @@ def build_home():
 """ % (social_html(), stats, cards, news)
 
     write("index.html", shell(
-        "index.html", "Alaa Khamis &mdash; AI for Smart Mobility",
+        "index.html", "Alaa Khamis | AI for Smart Mobility",
         "Alaa Khamis, PhD, SMIEEE. Associate Professor and Director of the AI for Smart Mobility Lab at KFUPM; "
         "author of Optimization Algorithms and Smart Mobility.",
         body))
@@ -806,27 +859,27 @@ if __name__ == "__main__":
 
     build_simple("shortbio.html", "shortbio.html", "About",
                  "Associate Professor and Director of the AI for Smart Mobility Lab at KFUPM.",
-                 "About — Alaa Khamis",
+                 "About | Alaa Khamis",
                  "Biography of Alaa Khamis: Associate Professor at KFUPM, former AI &amp; Smart Mobility "
                  "Technical Leader at General Motors.",
                  updated="November 2024")
 
     build_simple("research.html", "research.html", "Research",
-                 "AI at the intersection of mobility systems, services and business models &mdash; "
-                 "projects, grants and graduate supervision.",
-                 "Research — Alaa Khamis",
-                 "Research programme, funded projects and thesis supervision of Alaa Khamis.",
+                 "AI at the intersection of mobility systems, services, and business models: "
+                 "projects, grants, and graduate supervision.",
+                 "Research | Alaa Khamis",
+                 "Research program, funded projects and thesis supervision of Alaa Khamis.",
                  updated="November 2024")
 
     build_simple("services.html", "services.html", "Service",
                  "Community and university service, editorial boards and reviewing.",
-                 "Service — Alaa Khamis",
+                 "Service | Alaa Khamis",
                  "Professional and community service, editorial boards and reviewing activity.",
                  updated="July 2025")
 
-    build_simple("awards.html", "awards.html", "Awards &amp; Honours",
+    build_simple("awards.html", "awards.html", "Awards &amp; Honors",
                  "Recognition from IEEE, General Motors, Stanford/Elsevier and others.",
-                 "Awards &amp; Honours — Alaa Khamis",
+                 "Awards &amp; Honors | Alaa Khamis",
                  "Awards, honours, fellowships and appointments received by Alaa Khamis.",
                  updated="May 2025")
 
@@ -850,12 +903,12 @@ if __name__ == "__main__":
       <li><a href="index.html">Home</a></li>
       <li><a href="shortbio.html">About</a> &middot; <a href="research.html">Research</a> &middot; <a href="publications.html">Publications</a></li>
       <li><a href="books.html">Books</a> &middot; <a href="teaching.html">Teaching</a> &middot; <a href="services.html">Service</a></li>
-      <li><a href="awards.html">Awards &amp; Honours</a> &middot; <a href="events.html">News &amp; Events</a></li>
+      <li><a href="awards.html">Awards &amp; Honors</a> &middot; <a href="events.html">News &amp; Events</a></li>
     </ul>
   </div>
 </div>
 """
-    write("404.html", shell("404.html", "Page not found &mdash; Alaa Khamis",
+    write("404.html", shell("404.html", "Page not found | Alaa Khamis",
                             "The page you were looking for could not be found.", not_found))
 
     # sitemap + robots
